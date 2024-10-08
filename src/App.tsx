@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useState } from 'react'
 import Terminal, { TerminalOutput } from 'react-terminal-ui'
 import { GlobalStyle, themes } from './GlobalStyles'
@@ -9,6 +10,7 @@ const help = [
   '  - clear',
   '  - theme [theme]',
   '  - about',
+  '  - thanks',
   '  - help',
 ]
 
@@ -50,14 +52,29 @@ const App = (): React.ReactElement => {
       return
     }
 
+    if (parameters[0] === 'thanks') {
+      setTerminalLineData((prev) => [
+        ...prev,
+        'Thank you for visiting my website!',
+        'I hope you enjoyed it.',
+        '--',
+        'Special thanks to:',
+        '  - github.com/jonmbake/react-terminal-ui (for the terminal component)',
+        '  - github.com/mansoorbarri/coming-soon.git (for the background video)',
+      ])
+      return
+    }
+
     if (parameters[0] === 'about') {
       setTerminalLineData((prev) => [
         ...prev,
         'I am a software engineer based in Brazil.',
         'I am passionate about technology and programming.',
-        'I am JavaScript/TypeScript, Node.js, and Python enthusiast.',
-        'And I am <b>UNIX</b> philosophy follower.',
-        'Check it out at',
+        'I am JavaScript/TypeScript, Node.js, Python, and Bash/Shell Script enthusiast.',
+        'I am UNIX philosophy follower, so I love the terminal.',
+        'I advogate for privacy and security.',
+        '--',
+        'You can contact me at: 85wif9skr@mozmail.com',
       ])
       return
     }
