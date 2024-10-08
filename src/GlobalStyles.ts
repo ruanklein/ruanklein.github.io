@@ -70,6 +70,7 @@ export const GlobalStyle = createGlobalStyle`
 
     .react-terminal-wrapper {
       height: 100vh;
+      border-radius: 0;
     }
 
     .react-terminal {
