@@ -42,6 +42,7 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 15px;
     padding: 50px 10px 25px;
     height: 80vh;
+    overflow-y: auto;
 
     ::-webkit-scrollbar {
       width: 12px;
