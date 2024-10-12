@@ -1,27 +1,49 @@
 /* eslint-disable max-len */
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Terminal, { TerminalOutput } from 'react-terminal-ui'
 import { GlobalStyle, themes } from './GlobalStyles'
+
+import commands from './commands'
 
 type Theme = keyof typeof themes
 
 const help = [
-  'Available commands:',
-  '  - clear',
-  '  - theme [theme]',
-  '  - about',
-  '  - thanks',
-  '  - help',
+  'Comandos disponíveis:',
+  '  - clear\t\tlimpa o terminal',
+  '  - theme [theme]\taltera o tema do terminal',
+  ...commands.map((c) => `  - ${c.command}\t\t${c.description}`),
+  '  - help\t\texibe esta mensagem',
 ]
 
 const App = (): React.ReactElement => {
   const [theme, setTheme] = useState<Theme>('neon')
+  const [loading, setLoading] = useState(true)
   const [terminalLineData, setTerminalLineData] = useState([
-    'Welcome to the ruan.sh terminal!',
+    `Last login: ${new Date().toUTCString()} on ttys000`,
     ...help,
   ])
 
-  const onInput = (input: string): void => {
+  useEffect(() => {
+    if (!loading) {
+      localStorage.setItem('terminal-theme', theme)
+    }
+  }, [theme])
+
+  useEffect(() => {
+    const loadTheme = (): void => {
+      const storedTheme = localStorage.getItem('terminal-theme') as Theme
+
+      if (themes[storedTheme]) {
+        setTheme(storedTheme)
+      }
+    }
+
+    if (loading) {
+      loadTheme()
+    }
+  }, [loading])
+
+  const handleInput = (input: string): void => {
     const parameters = input.trim().toLowerCase().split(' ')
 
     if (parameters[0] === 'clear') {
@@ -33,7 +55,8 @@ const App = (): React.ReactElement => {
       if (parameters.length === 1) {
         setTerminalLineData((prev) => [
           ...prev,
-          `Available themes: ${Object.keys(themes).join(', ')}`,
+          '> theme',
+          `Temas disponíveis: ${Object.keys(themes).join(', ')}`,
         ])
         return
       }
@@ -43,68 +66,72 @@ const App = (): React.ReactElement => {
       if (!themes[themeName]) {
         setTerminalLineData((prev) => [
           ...prev,
-          `Theme "${themeName}" not found.`,
+          `> theme ${themeName}`,
+          `Tema "${themeName}" inválido. Digite "theme" para ver os temas disponíveis.`,
         ])
         return
       }
 
+      setTerminalLineData((prev) => [
+        ...prev,
+        `> theme ${themeName}`,
+        `Tema alterado para "${themeName}".`,
+      ])
       setTheme(themeName)
       return
     }
 
-    if (parameters[0] === 'thanks') {
-      setTerminalLineData((prev) => [
-        ...prev,
-        'Thank you for visiting my website!',
-        'I hope you enjoyed it.',
-        '--',
-        'Special thanks to:',
-        '  - github.com/jonmbake/react-terminal-ui (for the terminal component)',
-        '  - github.com/mansoorbarri/coming-soon.git (for the background video)',
-      ])
-      return
-    }
-
-    if (parameters[0] === 'about') {
-      setTerminalLineData((prev) => [
-        ...prev,
-        'I am a software engineer based in Brazil.',
-        'I am passionate about technology and programming.',
-        'I am JavaScript/TypeScript, Node.js, Python, and Bash/Shell Script enthusiast.',
-        'I am UNIX philosophy follower, so I love the terminal.',
-        'I advogate for privacy and security.',
-        '--',
-        'You can contact me at: 85wif9skr@mozmail.com',
-      ])
-      return
-    }
-
     if (parameters[0] === 'help') {
-      setTerminalLineData((prev) => [...prev, ...help])
+      setTerminalLineData((prev) => [...prev, '> help', ...help])
       return
     }
 
+    const command = commands.find(
+      (c) => c.command.toLowerCase() === parameters[0].toLowerCase()
+    )
+
+    if (command) {
+      setTerminalLineData((prev) => [
+        ...prev,
+        `> ${command.command}`,
+        ...command.content,
+      ])
+      return
+    }
+
+    const unknownCommand = parameters[0]
     setTerminalLineData((prev) => [
       ...prev,
-      `Command "${parameters[0]}" not found.`,
+      `> ${unknownCommand}`,
+      `Comando "${unknownCommand}" inválido. Digite "help" para ver os comandos disponíveis.`,
     ])
   }
 
   return (
     <>
       <GlobalStyle theme={themes[theme]} />
-      <video className="video-background" autoPlay muted loop>
+      <video
+        className="video-background"
+        autoPlay
+        muted
+        loop
+        onLoadedData={() => {
+          setLoading(false)
+        }}
+      >
         <source src="/bg.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
+        Seu navegador não suporta vídeos em HTML5.
       </video>
 
       <div className="content">
         <div className="terminal-container">
-          <Terminal name="ruan.sh" onInput={onInput} prompt="$">
-            {terminalLineData.map((line, index) => (
-              <TerminalOutput key={index}>{line}</TerminalOutput>
-            ))}
-          </Terminal>
+          {!loading && (
+            <Terminal name="ruan.sh" onInput={handleInput} prompt="$">
+              {terminalLineData.map((line, index) => (
+                <TerminalOutput key={index}>{line}</TerminalOutput>
+              ))}
+            </Terminal>
+          )}
         </div>
       </div>
     </>
