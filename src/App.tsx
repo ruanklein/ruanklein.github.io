@@ -177,28 +177,6 @@ const App = (): React.ReactElement => {
           </>
         )
       },
-      ip: async () => {
-        let userIp = 'desconhecido'
-
-        try {
-          const response = await fetch('https://ipinfo.io/json')
-          const data = await response.json()
-
-          userIp = data.ip
-        } catch (error) {}
-
-        return (
-          <>
-            <TerminalLine>
-              <strong>Uso:</strong> ip
-            </TerminalLine>
-            <TerminalLine>
-              <strong>Descrição:</strong> Exibe o endereço IP do usuário
-            </TerminalLine>
-            <TerminalLine>Seu IP: {userIp}</TerminalLine>
-          </>
-        )
-      },
       whois: () => {
         return (
           <>
