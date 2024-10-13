@@ -72,6 +72,10 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.linkHover}
   }
 
+  [data-terminal-prompt="#"]:before {
+    color: red;
+  }
+
   @media screen and (max-width: 768px) {
     .content {
       margin: 0;

@@ -12,6 +12,7 @@ type CommandInterface = Record<
 const App = (): React.ReactElement => {
   const [terminalTheme, setTerminalTheme] = useState<TerminalTheme>('neon')
   const [loading, setLoading] = useState(true)
+  const [terminalPrompt, setTerminalPrompt] = useState<'$' | '#'>('$')
   const [terminalLineData, setTerminalLineData] = useState<
     React.ReactElement[]
   >([
@@ -267,6 +268,28 @@ const App = (): React.ReactElement => {
       return
     }
 
+    // Easter egg
+    if (parameters[0] === 'sudo' && terminalPrompt === '$') {
+      setTerminalPrompt('#')
+      setTerminalLineData((prevData) => [
+        ...prevData,
+        <>{`> ${input}`}</>,
+        <>
+          <TerminalLine>
+            <strong>Uso:</strong> sudo &lt;comando&gt;
+          </TerminalLine>
+          <TerminalLine>
+            <strong>Descrição:</strong> Executa um comando com privilégios de
+            administrador
+          </TerminalLine>
+          <TerminalLine>
+            ...mas você não é o root, então não vai funcionar 😜
+          </TerminalLine>
+        </>,
+      ])
+      return
+    }
+
     setTerminalLineData((prevData) => [
       ...prevData,
       <>{`> ${input}`}</>,
@@ -297,7 +320,11 @@ const App = (): React.ReactElement => {
       <div className="content">
         <div className="terminal-container">
           {!loading && (
-            <Terminal name="ruan.sh" onInput={handleInput} prompt="$">
+            <Terminal
+              name="ruan.sh"
+              onInput={handleInput}
+              prompt={terminalPrompt}
+            >
               {terminalLineData.map((line, index) => (
                 <TerminalOutput key={index}>
                   <>{line}</>
