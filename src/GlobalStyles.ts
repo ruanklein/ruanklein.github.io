@@ -64,6 +64,14 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .react-terminal-wrapper a {
+    color: ${({ theme }) => theme.link}
+  }
+
+  .react-terminal-wrapper a:hover {
+    color: ${({ theme }) => theme.linkHover}
+  }
+
   @media screen and (max-width: 768px) {
     .content {
       margin: 0;
@@ -95,6 +103,8 @@ export const terminalThemes = {
     border: '1px solid rgba(255, 255, 255, 0.2)',
     boxShadow: '0 0 15px rgba(255, 20, 147, 0.5)',
     color: '#fff',
+    link: '#fff',
+    linkHover: '#fff',
   },
   ocean: {
     background:
@@ -102,6 +112,8 @@ export const terminalThemes = {
     border: '1px solid rgba(0, 255, 255, 0.2)',
     boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)',
     color: '#e0f7fa',
+    link: '#e0f7fa',
+    linkHover: '#fff',
   },
   sunset: {
     background:
@@ -109,6 +121,8 @@ export const terminalThemes = {
     border: '1px solid rgba(255, 165, 0, 0.2)',
     boxShadow: '0 0 15px rgba(255, 69, 0, 0.5)',
     color: '#fff5e6',
+    link: '#fff5e6',
+    linkHover: '#fff',
   },
   cyberpunk: {
     background:
@@ -116,6 +130,8 @@ export const terminalThemes = {
     border: '1px solid rgba(255, 0, 255, 0.2)',
     boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)',
     color: '#e0e0e0',
+    link: '#e0e0e0',
+    linkHover: '#fff',
   },
   emerald: {
     background:
@@ -123,17 +139,23 @@ export const terminalThemes = {
     border: '1px solid rgba(0, 255, 128, 0.2)',
     boxShadow: '0 0 15px rgba(0, 255, 128, 0.5)',
     color: '#d4ffd4',
+    link: '#d4ffd4',
+    linkHover: '#fff',
   },
   simplelight: {
     background: 'linear-gradient(135deg, #f5f7fa, #c3cfe2)',
     border: '1px solid #c3cfe2',
     boxShadow: '0 0 15px #c3cfe2',
     color: '#333',
+    link: '#333',
+    linkHover: '#000',
   },
   simpledark: {
     background: 'linear-gradient(135deg, #333, #000)',
     border: '1px solid #000',
     boxShadow: '0 0 15px #000',
     color: '#fff',
+    link: '#fff',
+    linkHover: '#ccc',
   },
 }
