@@ -35,6 +35,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .react-terminal-wrapper {
+    font-family: 'Fira Code', monospace;
     background: ${({ theme }) => theme.background};
     border: ${({ theme }) => theme.border};
     box-shadow: ${({ theme }) => theme.boxShadow};
