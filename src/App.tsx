@@ -283,7 +283,7 @@ const App = (): React.ReactElement => {
             administrador
           </TerminalLine>
           <TerminalLine>
-            ...mas você não é o root, então não vai funcionar 😜
+            ...mas você não é o root, então não vai funcionar...
           </TerminalLine>
         </>,
       ])
