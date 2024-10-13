@@ -76,26 +76,6 @@ const App = (): React.ReactElement => {
                 https://linkedin.com/in/ruanklein
               </a>
             </TerminalLine>
-            <TerminalLine>
-              Instagram:{' '}
-              <a
-                href="https://twitter.com/_ruanklein_"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                https://twitter.com/_ruanklein_
-              </a>
-            </TerminalLine>
-            <TerminalLine>
-              Facebook:{' '}
-              <a
-                href="https://www.facebook.com/ruankleinn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                https://www.facebook.com/ruankleinn
-              </a>
-            </TerminalLine>
           </>
         )
       },
