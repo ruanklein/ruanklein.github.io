@@ -6,7 +6,7 @@ import { GlobalStyle, TerminalLine, terminalThemes } from './GlobalStyles'
 type TerminalTheme = keyof typeof terminalThemes
 type CommandInterface = Record<
   string,
-  (parameters?: string[]) => React.ReactElement
+  (parameters?: string[]) => Promise<React.ReactElement> | React.ReactElement
 >
 
 const App = (): React.ReactElement => {
@@ -177,6 +177,28 @@ const App = (): React.ReactElement => {
           </>
         )
       },
+      ip: async () => {
+        let userIp = 'desconhecido'
+
+        try {
+          const response = await fetch('https://ipinfo.io/json')
+          const data = await response.json()
+
+          userIp = data.ip
+        } catch (error) {}
+
+        return (
+          <>
+            <TerminalLine>
+              <strong>Uso:</strong> ip
+            </TerminalLine>
+            <TerminalLine>
+              <strong>Descrição:</strong> Exibe o endereço IP do usuário
+            </TerminalLine>
+            <TerminalLine>Seu IP: {userIp}</TerminalLine>
+          </>
+        )
+      },
       whois: () => {
         return (
           <>
@@ -258,7 +280,7 @@ const App = (): React.ReactElement => {
     }
   }, [loading])
 
-  const handleInput = (input: string): void => {
+  const handleInput = async (input: string): Promise<void> => {
     const parameters = input.trim().toLowerCase().split(' ')
     const command = commands[parameters[0]]
 
@@ -290,14 +312,14 @@ const App = (): React.ReactElement => {
       return
     }
 
+    const nextTerminalLine = command
+      ? await command(parameters.slice(1))
+      : `Comando não encontrado: ${parameters[0]}`
+
     setTerminalLineData((prevData) => [
       ...prevData,
       <>{`> ${input}`}</>,
-      <>
-        {command
-          ? command(parameters.slice(1))
-          : `Comando não encontrado: ${parameters[0]}`}
-      </>,
+      <>{nextTerminalLine}</>,
     ])
   }
 
@@ -322,7 +344,10 @@ const App = (): React.ReactElement => {
           {!loading && (
             <Terminal
               name="ruan.sh"
-              onInput={handleInput}
+              // eslint-disable-next-line @typescript-eslint/no-misused-promises
+              onInput={async (input) => {
+                await handleInput(input)
+              }}
               prompt={terminalPrompt}
             >
               {terminalLineData.map((line, index) => (
