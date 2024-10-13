@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   body, html {
@@ -80,7 +80,15 @@ export const GlobalStyle = createGlobalStyle`
   }
 `
 
-export const themes = {
+export const TerminalLine = styled.span`
+  margin: 5px 0px;
+  padding: 0;
+  display: inline-block;
+  width: 100%;
+  white-space: pre-wrap;
+`
+
+export const terminalThemes = {
   neon: {
     background:
       'linear-gradient(135deg, rgba(138, 43, 226, 0.4), rgba(255, 20, 147, 0.4))',

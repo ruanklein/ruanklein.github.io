@@ -1,115 +1,306 @@
 /* eslint-disable max-len */
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Terminal, { TerminalOutput } from 'react-terminal-ui'
-import { GlobalStyle, themes } from './GlobalStyles'
+import { GlobalStyle, TerminalLine, terminalThemes } from './GlobalStyles'
 
-import commands from './commands'
-
-type Theme = keyof typeof themes
-
-const help = [
-  'Comandos disponíveis:',
-  '  - clear\t\tlimpa o terminal',
-  '  - theme [theme]\taltera o tema do terminal',
-  ...commands.map((c) => `  - ${c.command}\t\t${c.description}`),
-  '  - help\t\texibe esta mensagem',
-]
+type TerminalTheme = keyof typeof terminalThemes
+type CommandInterface = Record<
+  string,
+  (parameters?: string[]) => React.ReactElement
+>
 
 const App = (): React.ReactElement => {
-  const [theme, setTheme] = useState<Theme>('neon')
+  const [terminalTheme, setTerminalTheme] = useState<TerminalTheme>('neon')
   const [loading, setLoading] = useState(true)
-  const [terminalLineData, setTerminalLineData] = useState([
-    `Last login: ${new Date().toUTCString()} on ttys000`,
-    ...help,
+  const [terminalLineData, setTerminalLineData] = useState<
+    React.ReactElement[]
+  >([
+    <>Last login: {new Date().toUTCString()} on ttys000</>,
+    <>
+      Digite <strong>&quot;help&quot;</strong> para ver a lista de comandos
+      disponíveis.
+    </>,
   ])
 
+  const commands: CommandInterface = useMemo(
+    () => ({
+      clear: () => <></>,
+      theme: (parameters = []) => {
+        const [theme] = parameters as [TerminalTheme]
+
+        if (theme && terminalThemes[theme]) {
+          setTerminalTheme(theme)
+          return <>{`Tema alterado para "${theme}"`}</>
+        }
+
+        return (
+          <>
+            <TerminalLine>
+              <strong>Uso:</strong> theme &lt;tema&gt;
+            </TerminalLine>
+            <TerminalLine>
+              <strong>Descrição:</strong> Altera o tema do terminal
+            </TerminalLine>
+            <TerminalLine>
+              Temas disponíveis: {Object.keys(terminalThemes).join(', ')}
+            </TerminalLine>
+          </>
+        )
+      },
+      social: () => {
+        return (
+          <>
+            <TerminalLine>
+              <strong>Uso:</strong> social
+            </TerminalLine>
+            <TerminalLine>
+              <strong>Descrição:</strong> Exibe minhas redes sociais
+            </TerminalLine>
+            <TerminalLine>
+              GitHub:{' '}
+              <a
+                href="https://github.com/ruanklein"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://github.com/ruanklein
+              </a>
+            </TerminalLine>
+            <TerminalLine>
+              LinkedIn:{' '}
+              <a
+                href="https://linkedin.com/in/ruanklein"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://linkedin.com/in/ruanklein
+              </a>
+            </TerminalLine>
+            <TerminalLine>
+              Instagram:{' '}
+              <a
+                href="https://twitter.com/_ruanklein_"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://twitter.com/_ruanklein_
+              </a>
+            </TerminalLine>
+            <TerminalLine>
+              Facebook:{' '}
+              <a
+                href="https://www.facebook.com/ruankleinn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.facebook.com/ruankleinn
+              </a>
+            </TerminalLine>
+          </>
+        )
+      },
+      skills: () => {
+        return (
+          <>
+            <TerminalLine>
+              <strong>Uso:</strong> skills
+            </TerminalLine>
+            <TerminalLine>
+              <strong>Descrição:</strong> Exibe minhas habilidades
+            </TerminalLine>
+            <TerminalLine>
+              Linguagens de programação: JavaScript, TypeScript, Python, PHP,
+              Shell Script
+            </TerminalLine>
+            <TerminalLine>
+              Frameworks: React.js, Next.js, Nest.js, Express.js, Laravel,
+              FastAPI
+            </TerminalLine>
+            <TerminalLine>
+              Banco de dados: MySQL, PostgreSQL, SQLite, Redis, Firebase
+            </TerminalLine>
+            <TerminalLine>Cloud: AWS, Google Cloud Platform</TerminalLine>
+            <TerminalLine>
+              Outras habilidades: Docker, Git, CI/CD, Linux
+            </TerminalLine>
+          </>
+        )
+      },
+      projects: (parameters = []) => {
+        const [projectName] = parameters
+
+        if (projectName === 'ruan.sh') {
+          return (
+            <>
+              <TerminalLine>
+                <strong>Nome:</strong> ruan.sh
+              </TerminalLine>
+              <TerminalLine>
+                <strong>Descrição:</strong> Meu site pessoal
+              </TerminalLine>
+              <TerminalLine>
+                <strong>Link:</strong>{' '}
+                <a
+                  href="https://ruan.sh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://ruan.sh
+                </a>
+              </TerminalLine>
+              <TerminalLine>
+                <strong>Tecnologias:</strong> React.js, Vite, TypeScript, Styled
+                Components
+              </TerminalLine>
+            </>
+          )
+        }
+
+        if (projectName === 'digcard') {
+          return (
+            <>
+              <TerminalLine>
+                <strong>Nome:</strong> DIGCard
+              </TerminalLine>
+              <TerminalLine>
+                <strong>Descrição:</strong> Criador de cartões digitais
+              </TerminalLine>
+              <TerminalLine>
+                <strong>Link:</strong>{' '}
+                <a
+                  href="https://ruan.sh/portfolio/digcard"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://ruan.sh/portfolio/digcard
+                </a>
+              </TerminalLine>
+              <TerminalLine>
+                <strong>Tecnologias:</strong> React.js, Vite, TypeScript, Antd
+                Design, Font Awesome
+              </TerminalLine>
+            </>
+          )
+        }
+
+        return (
+          <>
+            <TerminalLine>
+              <strong>Uso:</strong> projects [nome-do-projeto]
+            </TerminalLine>
+            <TerminalLine>
+              <strong>Descrição:</strong> Exibe meus projetos. Se fornecido um
+              nome de projeto, exibe detalhes sobre ele
+            </TerminalLine>
+            <TerminalLine>Projetos: ruan.sh, DIGCard</TerminalLine>
+          </>
+        )
+      },
+      'about-me': () => {
+        return (
+          <>
+            <TerminalLine>
+              <strong>Uso:</strong> about-me
+            </TerminalLine>
+            <TerminalLine>
+              <strong>Descrição:</strong> Exibe informações sobre o autor
+            </TerminalLine>
+            <br />
+            <TerminalLine>Nome: Ruan Klein Felisbino</TerminalLine>
+            <TerminalLine>Profissão: Analista Full Stack</TerminalLine>
+            <TerminalLine>Localização: Curitiba, PR - Brasil</TerminalLine>
+            <TerminalLine>
+              Homepage:{' '}
+              <a
+                href="https://ruan.sh"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://ruan.sh
+              </a>
+            </TerminalLine>
+            <TerminalLine>
+              Contato:{' '}
+              <a
+                href="mailto:85wif9skr@mozmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                85wif9skr@mozmail.com
+              </a>
+            </TerminalLine>
+          </>
+        )
+      },
+      help: () => {
+        return (
+          <>
+            <TerminalLine>
+              <strong>Uso:</strong> help
+            </TerminalLine>
+            <TerminalLine>
+              <strong>Descrição:</strong> Exibe a lista de comandos disponíveis
+            </TerminalLine>
+            <TerminalLine>
+              Comandos disponíveis: {Object.keys(commands).join(', ')}
+            </TerminalLine>
+          </>
+        )
+      },
+    }),
+    []
+  )
+
   useEffect(() => {
-    if (!loading) {
-      localStorage.setItem('terminal-theme', theme)
+    const saveTerminalTheme = (): void => {
+      localStorage.setItem('terminal-theme', terminalTheme)
     }
-  }, [theme])
+
+    if (!loading) {
+      saveTerminalTheme()
+    }
+  }, [terminalTheme])
 
   useEffect(() => {
-    const loadTheme = (): void => {
-      const storedTheme = localStorage.getItem('terminal-theme') as Theme
+    const loadTerminalTheme = (): void => {
+      const storedTerminalTheme = localStorage.getItem(
+        'terminal-theme'
+      ) as TerminalTheme
 
-      if (themes[storedTheme]) {
-        setTheme(storedTheme)
+      if (terminalThemes[storedTerminalTheme]) {
+        setTerminalTheme(storedTerminalTheme)
       }
     }
 
     if (loading) {
-      loadTheme()
+      loadTerminalTheme()
     }
   }, [loading])
 
   const handleInput = (input: string): void => {
     const parameters = input.trim().toLowerCase().split(' ')
+    const command = commands[parameters[0]]
 
+    // Special case for clear command
     if (parameters[0] === 'clear') {
       setTerminalLineData([])
       return
     }
 
-    if (parameters[0] === 'theme') {
-      if (parameters.length === 1) {
-        setTerminalLineData((prev) => [
-          ...prev,
-          '> theme',
-          `Temas disponíveis: ${Object.keys(themes).join(', ')}`,
-        ])
-        return
-      }
-
-      const themeName = parameters[1] as Theme
-
-      if (!themes[themeName]) {
-        setTerminalLineData((prev) => [
-          ...prev,
-          `> theme ${themeName}`,
-          `Tema "${themeName}" inválido. Digite "theme" para ver os temas disponíveis.`,
-        ])
-        return
-      }
-
-      setTerminalLineData((prev) => [
-        ...prev,
-        `> theme ${themeName}`,
-        `Tema alterado para "${themeName}".`,
-      ])
-      setTheme(themeName)
-      return
-    }
-
-    if (parameters[0] === 'help') {
-      setTerminalLineData((prev) => [...prev, '> help', ...help])
-      return
-    }
-
-    const command = commands.find(
-      (c) => c.command.toLowerCase() === parameters[0].toLowerCase()
-    )
-
-    if (command) {
-      setTerminalLineData((prev) => [
-        ...prev,
-        `> ${command.command}`,
-        ...command.content,
-      ])
-      return
-    }
-
-    const unknownCommand = parameters[0]
-    setTerminalLineData((prev) => [
-      ...prev,
-      `> ${unknownCommand}`,
-      `Comando "${unknownCommand}" inválido. Digite "help" para ver os comandos disponíveis.`,
+    setTerminalLineData((prevData) => [
+      ...prevData,
+      <>{`> ${input}`}</>,
+      <>
+        {command
+          ? command(parameters.slice(1))
+          : `Comando não encontrado: ${parameters[0]}`}
+      </>,
     ])
   }
 
   return (
     <>
-      <GlobalStyle theme={themes[theme]} />
+      <GlobalStyle theme={terminalThemes[terminalTheme]} />
       <video
         className="video-background"
         autoPlay
@@ -128,7 +319,9 @@ const App = (): React.ReactElement => {
           {!loading && (
             <Terminal name="ruan.sh" onInput={handleInput} prompt="$">
               {terminalLineData.map((line, index) => (
-                <TerminalOutput key={index}>{line}</TerminalOutput>
+                <TerminalOutput key={index}>
+                  <>{line}</>
+                </TerminalOutput>
               ))}
             </Terminal>
           )}
