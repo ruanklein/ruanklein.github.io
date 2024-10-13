@@ -196,11 +196,11 @@ const App = (): React.ReactElement => {
           </>
         )
       },
-      'about-me': () => {
+      whois: () => {
         return (
           <>
             <TerminalLine>
-              <strong>Uso:</strong> about-me
+              <strong>Uso:</strong> whois
             </TerminalLine>
             <TerminalLine>
               <strong>Descrição:</strong> Exibe informações sobre o autor
