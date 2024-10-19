@@ -1,0 +1,22 @@
+x-common: &common
+  image: node:20-alpine
+  working_dir: /app
+  volumes:
+    - .:/app
+
+networks:
+  default:
+    name: ruan.sh
+
+services:
+  client:
+    <<: *common
+    container_name: client
+    command: sh -c 'yarn install && yarn vite --host 0.0.0.0'
+    ports:
+      - 5173:5173
+
+  build:
+    <<: *common
+    container_name: build
+    command: sh -c 'yarn install && yarn build'
