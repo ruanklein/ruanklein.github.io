@@ -149,11 +149,11 @@ const App = (): React.ReactElement => {
               <TerminalLine>
                 <strong>Link:</strong>{' '}
                 <a
-                  href="https://ruan.sh/portfolio/digcard"
+                  href="https://digcard.ruan.sh"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  https://ruan.sh/portfolio/digcard
+                  https://digcard.ruan.sh
                 </a>
               </TerminalLine>
               <TerminalLine>
