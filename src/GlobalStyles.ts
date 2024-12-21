@@ -163,4 +163,12 @@ export const terminalThemes = {
     link: '#fff',
     linkHover: '#ccc',
   },
+  simpledarkgreen: {
+    background: 'linear-gradient(135deg, #333, #000)',
+    border: '1px solid #000',
+    boxShadow: '0 0 15px #000',
+    color: '#00ff00',
+    link: '#00ff00',
+    linkHover: '#ccc',
+  },
 }
