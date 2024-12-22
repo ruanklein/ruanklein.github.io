@@ -1,12 +1,8 @@
 x-common: &common
-  image: node:20-alpine
+  image: node:22-alpine
   working_dir: /app
   volumes:
     - .:/app
-
-networks:
-  default:
-    name: ruan.sh
 
 services:
   client:
