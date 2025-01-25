@@ -13,6 +13,11 @@ const loadTerminalTheme = (): TerminalTheme => {
     'terminal-theme',
   ) as TerminalTheme
 
+  if (!(storedTerminalTheme in terminalThemes)) {
+    console.warn('Invalid terminal theme stored, using default!')
+    return 'neon'
+  }
+
   return storedTerminalTheme || 'neon'
 }
 
