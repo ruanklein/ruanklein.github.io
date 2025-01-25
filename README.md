@@ -31,12 +31,14 @@ Type **help** to see all available commands.
 ## Development
 
 Run:
+
 ```
 yarn install
 yarn dev
 ```
 
 To build for production:
+
 ```
 yarn build
 ```

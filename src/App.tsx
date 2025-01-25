@@ -229,7 +229,7 @@ const App = (): React.ReactElement => {
         )
       },
     }),
-    []
+    [],
   )
 
   useEffect(() => {
@@ -245,7 +245,7 @@ const App = (): React.ReactElement => {
   useEffect(() => {
     const loadTerminalTheme = (): void => {
       const storedTerminalTheme = localStorage.getItem(
-        'terminal-theme'
+        'terminal-theme',
       ) as TerminalTheme
 
       if (terminalThemes[storedTerminalTheme]) {
