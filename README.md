@@ -33,12 +33,12 @@ Type **help** to see all available commands.
 Run:
 
 ```
-yarn install
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 To build for production:
 
 ```
-yarn build
+pnpm build
 ```
