@@ -199,7 +199,7 @@ const App = (): React.ReactElement => {
               <strong>Descrição:</strong> Exibe informações sobre o autor
             </TerminalLine>
             <br />
-            <TerminalLine>Nome: Ruan Klein Felisbino</TerminalLine>
+            <TerminalLine>Nome: Ruan Felisbino</TerminalLine>
             <TerminalLine>Profissão: Analista Full Stack</TerminalLine>
             <TerminalLine>Localização: Curitiba, PR - Brasil</TerminalLine>
             <TerminalLine>
