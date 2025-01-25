@@ -15,3 +15,10 @@ services:
     <<: *common
     container_name: build
     command: sh -c 'pnpm install && pnpm build'
+
+  prod:
+    <<: *common
+    container_name: prod
+    command: sh -c 'pnpm install && pnpm build && pnpm preview --host 0.0.0.0'
+    ports:
+      - 4173:4173
