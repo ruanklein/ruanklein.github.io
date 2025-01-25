@@ -12,10 +12,17 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v2
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: false
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: |
@@ -39,10 +46,17 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: false
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22'
+          cache: 'pnpm'
 
       - name: Download node_modules artifact
         uses: actions/download-artifact@v4
