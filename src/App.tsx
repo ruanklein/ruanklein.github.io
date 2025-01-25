@@ -1,5 +1,4 @@
-/* eslint-disable max-len */
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import Terminal, { TerminalOutput } from 'react-terminal-ui'
 import { GlobalStyle, TerminalLine, terminalThemes } from './GlobalStyles'
 
@@ -9,9 +8,21 @@ type CommandInterface = Record<
   (parameters?: string[]) => Promise<React.ReactElement> | React.ReactElement
 >
 
+const loadTerminalTheme = (): TerminalTheme => {
+  const storedTerminalTheme = localStorage.getItem(
+    'terminal-theme',
+  ) as TerminalTheme
+
+  return storedTerminalTheme || 'neon'
+}
+
+const saveTerminalTheme = (terminalTheme: TerminalTheme): void => {
+  localStorage.setItem('terminal-theme', terminalTheme)
+}
+
 const App = (): React.ReactElement => {
-  const [terminalTheme, setTerminalTheme] = useState<TerminalTheme>('neon')
-  const [loading, setLoading] = useState(true)
+  const [terminalTheme, setTerminalTheme] = useState(loadTerminalTheme())
+  const [loadingBackgroundVideo, setLoadingBackgroundVideo] = useState(true)
   const [terminalPrompt, setTerminalPrompt] = useState<'$' | '#'>('$')
   const [terminalLineData, setTerminalLineData] = useState<
     React.ReactElement[]
@@ -31,6 +42,7 @@ const App = (): React.ReactElement => {
 
         if (theme && terminalThemes[theme]) {
           setTerminalTheme(theme)
+          saveTerminalTheme(theme)
           return <>{`Tema alterado para "${theme}"`}</>
         }
 
@@ -232,33 +244,7 @@ const App = (): React.ReactElement => {
     [],
   )
 
-  useEffect(() => {
-    const saveTerminalTheme = (): void => {
-      localStorage.setItem('terminal-theme', terminalTheme)
-    }
-
-    if (!loading) {
-      saveTerminalTheme()
-    }
-  }, [terminalTheme])
-
-  useEffect(() => {
-    const loadTerminalTheme = (): void => {
-      const storedTerminalTheme = localStorage.getItem(
-        'terminal-theme',
-      ) as TerminalTheme
-
-      if (terminalThemes[storedTerminalTheme]) {
-        setTerminalTheme(storedTerminalTheme)
-      }
-    }
-
-    if (loading) {
-      loadTerminalTheme()
-    }
-  }, [loading])
-
-  const handleInput = async (input: string): Promise<void> => {
+  const handleInput = (input: string): void => {
     const parameters = input.trim().toLowerCase().split(' ')
     const command = commands[parameters[0]]
 
@@ -291,7 +277,7 @@ const App = (): React.ReactElement => {
     }
 
     const nextTerminalLine = command
-      ? await command(parameters.slice(1))
+      ? command(parameters.slice(1))
       : `Comando não encontrado: ${parameters[0]}`
 
     setTerminalLineData((prevData) => [
@@ -310,7 +296,7 @@ const App = (): React.ReactElement => {
         muted
         loop
         onLoadedData={() => {
-          setLoading(false)
+          setLoadingBackgroundVideo(false)
         }}
       >
         <source src="/bg.mp4" type="video/mp4" />
@@ -319,12 +305,11 @@ const App = (): React.ReactElement => {
 
       <div className="content">
         <div className="terminal-container">
-          {!loading && (
+          {!loadingBackgroundVideo && (
             <Terminal
               name="ruan.sh"
-              // eslint-disable-next-line @typescript-eslint/no-misused-promises
               onInput={async (input) => {
-                await handleInput(input)
+                handleInput(input)
               }}
               prompt={terminalPrompt}
             >
