@@ -1,6 +1,5 @@
 x-common: &common
-  image: node:22-alpine
-  working_dir: /app
+  build: .
   volumes:
     - .:/app
 
@@ -8,11 +7,11 @@ services:
   client:
     <<: *common
     container_name: client
-    command: sh -c 'yarn install && yarn vite --host 0.0.0.0'
+    command: sh -c 'pnpm install && pnpm vite --host 0.0.0.0'
     ports:
       - 5173:5173
 
   build:
     <<: *common
     container_name: build
-    command: sh -c 'yarn install && yarn build'
+    command: sh -c 'pnpm install && pnpm build'
