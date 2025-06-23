@@ -1,5 +1,6 @@
 x-common: &common
   build: .
+  image: ruan.sh:latest
   volumes:
     - .:/app
 
