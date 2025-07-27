@@ -6,9 +6,6 @@
     Mail, 
     Code, 
     Terminal, 
-    Lightbulb,
-    Coffee,
-    Heart,
     X
   } from '@lucide/svelte';
   import Icon from '@iconify/svelte';
@@ -117,7 +114,7 @@
       <div class="card hero-card p-8 variant-glass-primary border border-primary-200 dark:border-primary-700">
         <div class="flex flex-col items-center space-y-4">
           <div class="w-24 h-24 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-white">
-            <img src="logo.png" alt="Ruan Logo" class="w-20 h-20 object-contain" />
+            <img src="my.jpeg" alt="Ruan Logo" class="object-contain" />
           </div>
           
           <div>
@@ -301,18 +298,18 @@
         </header>
         <section class="p-4">
           <div class="flex justify-center space-x-4">
-            <button class="btn variant-ghost-primary flex items-center gap-2">
+            <a href="https://github.com/ruanklein" class="btn variant-ghost-primary flex items-center gap-2" target="_blank">
               <Github class="w-5 h-5" />
               GitHub
-            </button>
-            <button class="btn variant-ghost-secondary flex items-center gap-2">
+            </a>
+            <a href="https://linkedin.com/in/ruanklein" class="btn variant-ghost-secondary flex items-center gap-2" target="_blank">
               <Linkedin class="w-5 h-5" />
               LinkedIn
-            </button>
-            <button class="btn variant-ghost-tertiary flex items-center gap-2">
+            </a>
+            <a href="mailto:ruan.klein@gmail.com" class="btn variant-ghost-tertiary flex items-center gap-2">
               <Mail class="w-5 h-5" />
               Email
-            </button>
+            </a>
           </div>
         </section>
       </div>
@@ -321,10 +318,10 @@
     <!-- Footer -->
     <footer class="text-center mt-12 py-6 text-surface-500 dark:text-surface-400">
       <p class="text-sm">
-        Made with <Heart class="inline w-4 h-4 text-error-500" /> and Svelte
+        Made with <Icon icon="simple-icons:svelte" class="inline w-4 h-4 text-error-500" /> and <Icon icon="simple-icons:tailwindcss" class="inline w-4 h-4 text-primary-500" />
       </p>
       <p class="text-xs mt-2">
-        "Make it simple, but not simpler" - Albert Einstein
+        ruan.sh
       </p>
     </footer>
   </div>
@@ -603,6 +600,34 @@
   /* Section scroll padding for fixed navbar */
   section {
     scroll-margin-top: 80px;
+    border-left: 4px solid transparent;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding-left: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  section:hover {
+    border-left-color: #d4a574;
+    padding-left: 20px;
+  }
+
+  /* Prevent double borders on ALL internal elements */
+  section * {
+    border-left: none !important;
+  }
+
+  section .card,
+  section .card-header,
+  section header,
+  section p,
+  section blockquote {
+    border-left: none !important;
+  }
+
+  /* Ensure section hover border takes precedence */
+  section:hover * {
+    border-left: none !important;
   }
 
   /* Enhanced focus states for accessibility */
