@@ -1,25 +1,31 @@
+networks:
+  default:
+    name: ruan.sh
+    external: false
+
 x-common: &common
-  build: .
-  image: ruan.sh:latest
+  image: node:24-alpine
   volumes:
     - .:/app
+  user: node
+  working_dir: /app
 
 services:
   client:
     <<: *common
     container_name: client
-    command: sh -c 'pnpm install && pnpm vite --host 0.0.0.0'
+    command: sh -c 'yarn install && yarn vite --host 0.0.0.0'
     ports:
       - 5173:5173
 
   build:
     <<: *common
     container_name: build
-    command: sh -c 'pnpm install && pnpm build'
+    command: sh -c 'yarn install && yarn build'
 
   prod:
     <<: *common
     container_name: prod
-    command: sh -c 'pnpm install && pnpm build && pnpm preview --host 0.0.0.0'
+    command: sh -c 'yarn install && yarn build && yarn preview --host 0.0.0.0'
     ports:
       - 4173:4173
