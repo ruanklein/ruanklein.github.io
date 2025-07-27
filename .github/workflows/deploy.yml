@@ -12,21 +12,15 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v2
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install: false
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
-          cache: 'pnpm'
+          node-version: '24'
+          cache: 'yarn'
 
       - name: Install dependencies
         run: |
-          pnpm install
+          yarn install
 
       - name: Archive node_modules with permissions
         run: |
@@ -46,17 +40,11 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install: false
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
-          cache: 'pnpm'
+          node-version: '24'
+          cache: 'yarn'
 
       - name: Download node_modules artifact
         uses: actions/download-artifact@v4
@@ -70,7 +58,7 @@ jobs:
 
       - name: Build React app
         run: |
-          pnpm build
+          yarn build
 
       - name: Archive build artifacts
         uses: actions/upload-artifact@v4
