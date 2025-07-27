@@ -246,25 +246,29 @@
         </header>
         <section class="p-4">
           <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            I'm passionate about technology and the endless possibilities it offers. Here, I'll briefly share my personal experience 
-            with programming and tech, this is not about my professional background in companies. For that, please check out my LinkedIn.
+            Here, I'll briefly share my personal experience with programming and tech.
+            If you're looking for my professional background in companies, feel free to check out my LinkedIn.
           </p>
           <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
             My journey began in 2008 with my first "Hello World" in C. At the time, I had absolutely no idea what a compiler was. 
-            Around the same time, I started exploring GNU/Linux using the legendary Slackware distribution. What an experience!
           </p>
+
+          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
+            Around the same time, I started exploring GNU/Linux using the legendary Slackware distribution. And let me tell you,
+            configuring X11 manually was a rite of passage.
+          </p>
+
           <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
             From there, I became a self-taught developer, diving deep into Shell scripting, Perl, Python, and the entire Linux ecosystem. 
+          </p>
+
+          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
             I also enrolled in university and graduated in Systems Analysis and Development in 2015. It was during that time that I learned 
             more about how the web works, and where I built my first web projects using PHP and JavaScript.
           </p>
+
           <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            Although I've always loved learning on my own, university gave me the push I needed to start getting into web development. 
-            Before that, just to give some context, I was more into low-level and desktop programming, automation scripts and CLI utilities, mostly.
-          </p>
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            Over the years, I kept studying and exploring new languages and technologies on my own. I've worked with Node.js, TypeScript, 
-            React.js, Electron, Redux, Next.js... the list goes on. These days, I've really been enjoying programming in Golang, 
+            Over the years, I kept studying and exploring new languages and technologies on my own. These days, I've really been enjoying programming in Golang, 
             as it reminds me a lot of C, my first language, and the one that sparked my passion for coding.
           </p>
           <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
@@ -276,7 +280,7 @@
           </p>
           <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
             As you can probably tell, I've had a strong connection with Linux and open source throughout my journey. Even though I no longer 
-            use Linux as my main OS (I gave in to Apple, sorry!), I still consider it an excellent system for all kinds of users.
+            use Linux as my main OS (I ended up giving in to Apple because of the Silicon line), I still consider it an excellent system for all kinds of users.
           </p>
           <p class="text-surface-600 dark:text-surface-300 leading-relaxed text-lg">
             Guided by the Unix philosophy and the KISS principle, I strive to build solutions with the lowest possible complexity, 
