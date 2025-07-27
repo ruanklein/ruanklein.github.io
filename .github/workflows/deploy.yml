@@ -56,7 +56,7 @@ jobs:
         run: |
           tar -xzf node_modules.tar.gz
 
-      - name: Build React app
+      - name: Build app
         run: |
           yarn build
 
