@@ -40,12 +40,12 @@
       <div class="flex items-center justify-between h-16">
         
         <!-- Logo -->
-        <div class="flex items-center space-x-3">
+        <a href="/" class="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-300">
           <div class="w-10 h-10 rounded-full overflow-hidden bg-white shadow-md">
             <img src="logo.png" alt="Ruan Logo" class="w-full h-full object-contain" />
           </div>
           <span class="text-lg font-bold text-primary-700 dark:text-primary-300">ruan.sh</span>
-        </div>
+        </a>
         
         <!-- Navigation Menu -->
         <div class="hidden md:flex items-center space-x-8">
@@ -320,9 +320,9 @@
       <p class="text-sm">
         Made with <Icon icon="simple-icons:svelte" class="inline w-4 h-4 text-error-500" /> and <Icon icon="simple-icons:tailwindcss" class="inline w-4 h-4 text-primary-500" />
       </p>
-      <p class="text-xs mt-2">
+      <a href="/" class="text-xs mt-2">
         ruan.sh
-      </p>
+      </a>
     </footer>
   </div>
 </div>
