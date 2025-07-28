@@ -263,6 +263,20 @@
           </p>
 
           <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
+            Along the way, I've also contributed to a few open source projects. I was a contributor to SlackBuilds.org for a while, 
+            maintaining WinUSB; a tool to create bootable Windows USB drives, as the main maintainer.
+          </p>
+
+          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
+            I also contributed with articles, tips, and scripts to various Linux community portals across Latin America.
+          </p>
+          
+          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
+            As you can probably tell, I've had a strong connection with Linux and open source throughout my journey. Even though I no longer 
+            use Linux as my main OS (I ended up giving in to Apple because of the Silicon line), I still consider it an excellent system for all kinds of users.
+          </p>
+
+          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
             I also enrolled in university and graduated in Systems Analysis and Development in 2015. It was during that time that I learned 
             more about how the web works, and where I built my first web projects using PHP and JavaScript.
           </p>
@@ -271,20 +285,12 @@
             Over the years, I kept studying and exploring new languages and technologies on my own. These days, I've really been enjoying programming in Golang, 
             as it reminds me a lot of C, my first language, and the one that sparked my passion for coding.
           </p>
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            Along the way, I've also contributed to a few open source projects. I was a contributor to SlackBuilds.org for a while, 
-            maintaining WinUSB; a tool to create bootable Windows USB drives, as the main maintainer.
-          </p>
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            I also used to write articles, tips, and scripts for Viva o Linux, the largest GNU/Linux portal in Latin America.
-          </p>
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            As you can probably tell, I've had a strong connection with Linux and open source throughout my journey. Even though I no longer 
-            use Linux as my main OS (I ended up giving in to Apple because of the Silicon line), I still consider it an excellent system for all kinds of users.
-          </p>
           <p class="text-surface-600 dark:text-surface-300 leading-relaxed text-lg">
             Guided by the Unix philosophy and the KISS principle, I strive to build solutions with the lowest possible complexity, 
             clearly separating each component's responsibilities. This approach makes systems more accessible to both users and fellow developers. 
+          </p>
+
+          <p class="text-surface-600 dark:text-surface-300 leading-relaxed text-lg">
             After all, good code should tell a story, not be a puzzle.
           </p>
         </section>
