@@ -346,23 +346,11 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  
-  .gradient-heading {
-    background: linear-gradient(135deg, rgb(var(--color-primary-500)), rgb(var(--color-secondary-500)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
 
   /* Card Animations */
   .card {
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     transform: translateY(0);
-  }
-
-  .card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
 
   /* Stagger entrance animations */
@@ -379,13 +367,7 @@
     background: linear-gradient(145deg, rgba(var(--color-primary-100), 0.3), rgba(var(--color-secondary-100), 0.2));
     backdrop-filter: blur(10px);
     border: 1px solid rgba(var(--color-primary-200), 0.3);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .hero-card:hover {
-    transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 35px 60px -12px rgba(var(--color-primary-500), 0.4);
-    border-color: rgba(var(--color-primary-300), 0.6);
+    transition: all 0.3s ease;
   }
 
   /* Technology icons floating animation */
@@ -398,54 +380,19 @@
     50% { transform: translateY(-10px); }
   }
 
-  /* Development principles cards */
-  .principle-card {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-  }
-
-  .principle-card:hover {
-    transform: translateY(-15px) rotate(2deg);
-  }
-
-  .principle-icon {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .principle-card:hover .principle-icon {
-    transform: scale(1.1) rotate(-2deg);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Contact section pulse effect */
+  /* Contact section */
   .contact-card {
     position: relative;
     overflow: hidden;
   }
 
-  .contact-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(var(--color-secondary-300), 0.4), transparent);
-    transition: left 0.8s;
-  }
-
-  .contact-card:hover::before {
-    left: 100%;
-  }
-
   /* Button hover enhancements */
   .btn {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
   }
 
   .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
   }
 
   /* Tooltip Styles */
@@ -564,15 +511,6 @@
     width: 100%;
   }
 
-  /* Active nav link styles */
-  .nav-link.active {
-    color: rgb(var(--color-primary-600));
-  }
-
-  .nav-link.active::after {
-    width: 100%;
-  }
-
   /* Mobile Menu Styles */
   .mobile-menu {
     animation: slideDown 0.3s ease-out;
@@ -610,34 +548,7 @@
   /* Section scroll padding for fixed navbar */
   section {
     scroll-margin-top: 80px;
-    border-left: 4px solid transparent;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
     padding-left: 16px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  section:hover {
-    border-left-color: #d4a574;
-    padding-left: 20px;
-  }
-
-  /* Prevent double borders on ALL internal elements */
-  section * {
-    border-left: none !important;
-  }
-
-  section .card,
-  section .card-header,
-  section header,
-  section p,
-  section blockquote {
-    border-left: none !important;
-  }
-
-  /* Ensure section hover border takes precedence */
-  section:hover * {
-    border-left: none !important;
   }
 
   /* Enhanced focus states for accessibility */
