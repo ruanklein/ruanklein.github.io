@@ -138,10 +138,10 @@
             </div>
             
             <!-- Technology Icons -->
-            <div class="tech-icons flex flex-wrap justify-center items-center gap-4 max-w-4xl mx-auto">
+            <div class="flex flex-wrap justify-center items-center gap-4 max-w-4xl mx-auto">
               
               <!-- Node.js -->
-              <div class="group relative tooltip" data-tooltip="Node.js">
+              <div class="group relative tooltip tech-float" data-tooltip="Node.js">
                 <Icon 
                   icon="simple-icons:nodedotjs" 
                   class="w-8 h-8 transition-transform group-hover:scale-110 cursor-pointer text-success-500" 
@@ -149,7 +149,7 @@
               </div>
 
               <!-- TypeScript -->
-              <div class="group relative tooltip" data-tooltip="TypeScript">
+              <div class="group relative tooltip tech-float" data-tooltip="TypeScript">
                 <Icon 
                   icon="simple-icons:typescript" 
                   class="w-8 h-8 transition-transform group-hover:scale-110 cursor-pointer text-primary-500" 
@@ -157,7 +157,7 @@
               </div>
 
               <!-- Golang -->
-              <div class="group relative tooltip" data-tooltip="Golang">
+              <div class="group relative tooltip tech-float" data-tooltip="Golang">
                 <Icon 
                   icon="simple-icons:go" 
                   class="w-8 h-8 transition-transform group-hover:scale-110 cursor-pointer text-secondary-500" 
@@ -165,7 +165,7 @@
               </div>
 
               <!-- PHP -->
-              <div class="group relative tooltip" data-tooltip="PHP">
+              <div class="group relative tooltip tech-float" data-tooltip="PHP">
                 <Icon 
                   icon="simple-icons:php" 
                   class="w-8 h-8 transition-transform group-hover:scale-110 cursor-pointer text-primary-500" 
@@ -173,7 +173,7 @@
               </div>
 
               <!-- Python -->
-              <div class="group relative tooltip" data-tooltip="Python">
+              <div class="group relative tooltip tech-float" data-tooltip="Python">
                 <Icon 
                   icon="simple-icons:python" 
                   class="w-8 h-8 transition-transform group-hover:scale-110 cursor-pointer text-primary-600" 
@@ -181,7 +181,7 @@
               </div>
 
               <!-- Svelte -->
-              <div class="group relative tooltip" data-tooltip="Svelte">
+              <div class="group relative tooltip tech-float" data-tooltip="Svelte">
                 <Icon 
                   icon="simple-icons:svelte" 
                   class="w-8 h-8 transition-transform group-hover:scale-110 cursor-pointer text-error-500" 
@@ -189,7 +189,7 @@
               </div>
 
               <!-- React -->
-              <div class="group relative tooltip" data-tooltip="React">
+              <div class="group relative tooltip tech-float" data-tooltip="React">
                 <Icon 
                   icon="simple-icons:react" 
                   class="w-8 h-8 transition-transform group-hover:scale-110 cursor-pointer text-secondary-400" 
@@ -197,7 +197,7 @@
               </div>
 
               <!-- Docker -->
-              <div class="group relative tooltip" data-tooltip="Docker">
+              <div class="group relative tooltip tech-float" data-tooltip="Docker">
                 <Icon 
                   icon="simple-icons:docker" 
                   class="w-8 h-8 transition-transform group-hover:scale-110 cursor-pointer text-primary-500" 
@@ -205,7 +205,7 @@
               </div>
 
               <!-- Shell Script -->
-              <div class="group relative tooltip" data-tooltip="Shell Script">
+              <div class="group relative tooltip tech-float" data-tooltip="Shell Script">
                 <Icon 
                   icon="simple-icons:gnubash" 
                   class="w-8 h-8 transition-transform group-hover:scale-110 cursor-pointer text-success-600" 
@@ -213,7 +213,7 @@
               </div>
 
               <!-- Linux -->
-              <div class="group relative tooltip" data-tooltip="Linux">
+              <div class="group relative tooltip tech-float" data-tooltip="Linux">
                 <Icon 
                   icon="simple-icons:linux" 
                   class="w-8 h-8 transition-transform group-hover:scale-110 cursor-pointer text-warning-600" 
@@ -221,7 +221,7 @@
               </div>
 
               <!-- C Language -->
-              <div class="group relative tooltip" data-tooltip="C">
+              <div class="group relative tooltip tech-float" data-tooltip="C">
                 <Icon 
                   icon="simple-icons:c" 
                   class="w-8 h-8 transition-transform group-hover:scale-110 cursor-pointer text-surface-600" 
@@ -370,15 +370,43 @@
     transition: all 0.3s ease;
   }
 
-  /* Technology icons floating animation */
-  .tech-icons {
-    animation: float 6s ease-in-out infinite;
+  /* Technology icons enhanced effects */
+  .tech-float {
+    animation: float 8s ease-in-out infinite;
   }
 
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-8px); }
   }
+
+  .tooltip {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .tooltip:hover {
+    transform: translateY(-4px) scale(1.1);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+  }
+
+  /* Technology icon glow effects */
+  .tooltip:hover :global(svg) {
+    filter: drop-shadow(0 0 8px currentColor) brightness(1.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Staggered animation delays for floating effect */
+  .tech-float:nth-child(1) { animation-delay: 0s; }
+  .tech-float:nth-child(2) { animation-delay: 0.5s; }
+  .tech-float:nth-child(3) { animation-delay: 1s; }
+  .tech-float:nth-child(4) { animation-delay: 1.5s; }
+  .tech-float:nth-child(5) { animation-delay: 2s; }
+  .tech-float:nth-child(6) { animation-delay: 2.5s; }
+  .tech-float:nth-child(7) { animation-delay: 3s; }
+  .tech-float:nth-child(8) { animation-delay: 3.5s; }
+  .tech-float:nth-child(9) { animation-delay: 4s; }
+  .tech-float:nth-child(10) { animation-delay: 4.5s; }
+  .tech-float:nth-child(11) { animation-delay: 5s; }
 
   /* Contact section */
   .contact-card {
