@@ -24,9 +24,12 @@
   <!-- Main Container -->
   <div>
     
-    <!-- Hero Section -->
-    <section id="presentation" class="min-h-screen flex items-center justify-center px-4 text-center animate-fade-in" class:opacity-0={!mounted}>
-      <div class="card hero-card p-8 variant-glass-primary border border-primary-200 dark:border-primary-700">
+    <!-- Vintage Glass Container -->
+    <div class="min-h-screen flex items-center justify-center p-4">
+      <div class="vintage-glass-card max-w-4xl w-full p-8 rounded-3xl">
+        
+        <!-- Hero Section -->
+        <section id="presentation" class="text-center animate-fade-in" class:opacity-0={!mounted}>
         <div class="flex flex-col items-center space-y-4">
           <div class="w-24 h-24 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-white">
             <img src="logo.png" alt="Ruan Logo" class="object-contain" />
@@ -34,22 +37,22 @@
           
           <div>
             <div class="mb-2">
-              <p class="text-sm text-surface-500 dark:text-surface-400 mb-1">Hi! My name is</p>
+              <p class="text-sm text-surface-500 dark:text-surface-300 mb-1">Hi! My name is</p>
               <h1 class="h1 text-primary-700 dark:text-primary-300 font-bold">RUAN</h1>
             </div>
             
             <div class="mb-2">
-              <p class="text-sm text-surface-500 dark:text-surface-400 mb-1">and I am a</p>
+              <p class="text-sm text-surface-500 dark:text-surface-300 mb-1">and I am a</p>
               <h2 class="h2 text-surface-700 dark:text-surface-200 font-semibold">Software Engineer</h2>
             </div>
             
             <div class="mb-2">
-              <p class="text-sm text-surface-500 dark:text-surface-400 mb-1">and I have</p>
+              <p class="text-sm text-surface-500 dark:text-surface-300 mb-1">and I have</p>
               <span class="badge variant-filled-secondary text-lg font-bold px-4 py-2">+10 years experience</span>
             </div>
             
             <div class="mb-4">
-              <p class="text-sm text-surface-500 dark:text-surface-400 text-center">and I work with the following technologies</p>
+              <p class="text-sm text-surface-500 dark:text-surface-300 text-center">and I work with the following technologies</p>
             </div>
             
             <!-- Technology Icons -->
@@ -147,19 +150,19 @@
 
            <!-- Favorite phrase -->
           <div class="mb-2">
-            <p class="text-sm text-surface-500 dark:text-surface-400 mb-2">and my favorite phrase is</p>
+            <p class="text-sm text-surface-500 dark:text-surface-300 mb-2">and my favorite phrase is</p>
             <h4 class="h4 text-secondary-700 dark:text-secondary-300 font-semibold">"After all, good code should tell a story, not be a puzzle."</h4>
           </div>
 
             <!-- Philosophy -->
           <div class="mb-2">
-            <p class="text-sm text-surface-500 dark:text-surface-400 mb-2">and my principle is</p>
+            <p class="text-sm text-surface-500 dark:text-surface-300 mb-2">and my principle is</p>
             <h5 class="h5 text-orange-700 dark:text-orange-300 font-bold">Keep It Simple, Stupid!</h5>
           </div>
 
           <!-- Contact -->
           <div class="mb-6">
-            <p class="text-sm text-surface-500 dark:text-surface-400 mb-2">and you can contact me by</p>
+            <p class="text-sm text-surface-500 dark:text-surface-300 mb-2">and you can contact me by</p>
             <div class="flex flex-col md:flex-row justify-center gap-2 md:gap-4">
               <a href="https://github.com/ruanklein" class="btn variant-ghost-primary flex items-center justify-center gap-2 py-3" target="_blank">
                 <Github class="w-5 h-5" />
@@ -176,19 +179,21 @@
             </div>
           </div>
 
-          <!-- Footer -->
+                    <!-- Footer -->
           <footer class="text-center py-12 text-surface-500 dark:text-surface-400">
             <div class="mb-4">
-              <p class="text-sm text-surface-500 dark:text-surface-400 mb-1">Thanks for visiting my website</p>
-              <p class="text-sm">
+              <p class="text-sm text-surface-500 dark:text-surface-300 mb-1">Thanks for visiting my website</p>
+              <p class="text-sm text-surface-500 dark:text-surface-300">
                 Made with <Icon icon="simple-icons:svelte" class="inline w-4 h-4 text-error-500" /> and <Icon icon="simple-icons:tailwindcss" class="inline w-4 h-4 text-primary-500" />
               </p>
             </div>
           </footer>
-          </div>
-        </div>
+          </div> <!-- Fecha div da linha 38 -->
+        </div> <!-- Fecha div da linha 33 -->
+        </section>
+        
       </div>
-    </section>
+    </div>
 
   </div>
 </div>
@@ -201,20 +206,6 @@
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Card Animations */
-  .card {
-    transition: all 0.3s ease;
-    transform: translateY(0);
-  }
-
-  /* Hero card special effects */
-  .hero-card {
-    background: linear-gradient(145deg, rgba(var(--color-primary-100), 0.3), rgba(var(--color-secondary-100), 0.2));
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(var(--color-primary-200), 0.3);
-    transition: all 0.3s ease;
   }
 
   /* Technology icons enhanced effects */
@@ -322,9 +313,92 @@
     scroll-behavior: smooth;
   }
 
-  /* Enhanced focus states for accessibility */
-  .card:focus-within {
-    outline: 2px solid rgb(var(--color-primary-500));
-    outline-offset: 4px;
+  /* Vintage Glass Card */
+  .vintage-glass-card {
+    background: linear-gradient(
+      145deg,
+      rgba(252, 248, 243, 0.25) 0%,
+      rgba(240, 224, 207, 0.15) 50%,
+      rgba(252, 248, 243, 0.25) 100%
+    );
+    backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid rgba(212, 165, 116, 0.3);
+    box-shadow: 
+      0 8px 32px rgba(212, 165, 116, 0.1),
+      0 2px 8px rgba(184, 134, 89, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(212, 165, 116, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s ease;
+    animation: glassCardAppear 1.2s ease-out;
+  }
+
+  @keyframes glassCardAppear {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      backdrop-filter: blur(0px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      backdrop-filter: blur(20px) saturate(1.2);
+    }
+  }
+
+  .vintage-glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(212, 165, 116, 0.6) 50%,
+      transparent 100%
+    );
+  }
+
+  .vintage-glass-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+  }
+
+  /* Dark mode vintage glass */
+  :global(.dark) .vintage-glass-card {
+    background: linear-gradient(
+      145deg,
+      rgba(68, 56, 53, 0.35) 0%,
+      rgba(41, 37, 36, 0.25) 50%,
+      rgba(68, 56, 53, 0.35) 100%
+    );
+    border: 1px solid rgba(139, 92, 53, 0.4);
+    box-shadow: 
+      0 8px 32px rgba(139, 92, 53, 0.15),
+      0 2px 8px rgba(101, 67, 42, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(139, 92, 53, 0.15);
+  }
+
+  :global(.dark) .vintage-glass-card::before {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(139, 92, 53, 0.8) 50%,
+      transparent 100%
+    );
   }
 </style>
