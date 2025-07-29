@@ -4,117 +4,32 @@
     Github, 
     Linkedin, 
     Mail, 
-    Code, 
-    Terminal, 
-    X
   } from '@lucide/svelte';
   import Icon from '@iconify/svelte';
 
   let mounted = false;
   let aboutVisible = false;
-  let contactVisible = false;
-  let mobileMenuOpen = false;
   
   onMount(() => {
     mounted = true;
     
     // Stagger animations for cards
     setTimeout(() => aboutVisible = true, 300);
-    setTimeout(() => contactVisible = true, 600);
   });
-
-  function toggleMobileMenu() {
-    mobileMenuOpen = !mobileMenuOpen;
-  }
-
-  function closeMobileMenu() {
-    mobileMenuOpen = false;
-  }
 </script>
 
 <div class="min-h-screen bg-gradient-to-br from-surface-50 via-surface-100 to-surface-200 dark:from-surface-900 dark:via-surface-800 dark:to-surface-700">
-  
-  <!-- Navigation Bar -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-surface-50/70 dark:bg-surface-900/60 backdrop-blur-xl border-b border-primary-200/20 dark:border-primary-700/20 shadow-lg/10">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between h-16">
-        
-        <!-- Logo -->
-        <a href="/" class="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-300">
-          <div class="w-10 h-10 rounded-full overflow-hidden bg-white shadow-md">
-            <img src="logo.png" alt="Ruan Logo" class="w-full h-full object-contain" />
-          </div>
-          <span class="text-lg font-bold text-primary-700 dark:text-primary-300">ruan.sh</span>
-        </a>
-        
-        <!-- Navigation Menu -->
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#presentation" class="nav-link text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-300">
-            Presentation
-          </a>
-          <a href="#about" class="nav-link text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-300">
-            About Me
-          </a>
-          <a href="#contact" class="nav-link text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-300">
-            Contact
-          </a>
-        </div>
-        
-        <!-- Mobile Menu Button -->
-        <button 
-          on:click={toggleMobileMenu}
-          class="md:hidden p-2 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-primary-100/50 dark:hover:bg-primary-900/20 transition-colors duration-300"
-          aria-label="Toggle mobile menu"
-        >
-          {#if mobileMenuOpen}
-            <X class="w-5 h-5" />
-          {:else}
-            <Terminal class="w-5 h-5" />
-          {/if}
-        </button>
-        
-      </div>
 
-      <!-- Mobile Menu -->
-      {#if mobileMenuOpen}
-        <div class="md:hidden border-t border-primary-200/20 dark:border-primary-700/20 mobile-menu">
-          <div class="px-2 pt-2 pb-3 space-y-1">
-            <a 
-              href="#presentation" 
-              on:click={closeMobileMenu}
-              class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-100/50 dark:hover:bg-primary-900/20 transition-colors duration-300"
-            >
-              Presentation
-            </a>
-            <a 
-              href="#about" 
-              on:click={closeMobileMenu}
-              class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-100/50 dark:hover:bg-primary-900/20 transition-colors duration-300"
-            >
-              About Me
-            </a>
-            <a 
-              href="#contact" 
-              on:click={closeMobileMenu}
-              class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-100/50 dark:hover:bg-primary-900/20 transition-colors duration-300"
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      {/if}
-    </div>
-  </nav>
 
   <!-- Main Container -->
-  <div class="container mx-auto px-4 py-8 max-w-4xl pt-24">
+  <div>
     
     <!-- Hero Section -->
-    <section id="presentation" class="text-center mb-12 animate-fade-in" class:opacity-0={!mounted}>
+    <section id="presentation" class="min-h-screen flex items-center justify-center px-4 text-center animate-fade-in" class:opacity-0={!mounted}>
       <div class="card hero-card p-8 variant-glass-primary border border-primary-200 dark:border-primary-700">
         <div class="flex flex-col items-center space-y-4">
           <div class="w-24 h-24 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-white">
-            <img src="my.jpeg" alt="Ruan Logo" class="object-contain" />
+            <img src="logo.png" alt="Ruan Logo" class="object-contain" />
           </div>
           
           <div>
@@ -138,7 +53,7 @@
             </div>
             
             <!-- Technology Icons -->
-            <div class="flex flex-wrap justify-center items-center gap-4 max-w-4xl mx-auto">
+            <div class="flex flex-wrap justify-center items-center gap-4 max-w-4xl mx-auto mb-4">
               
               <!-- Node.js -->
               <div class="group relative tooltip tech-float" data-tooltip="Node.js">
@@ -229,111 +144,52 @@
               </div>
 
             </div>
+
+           <!-- Favorite phrase -->
+          <div class="mb-2">
+            <p class="text-sm text-surface-500 dark:text-surface-400 mb-2">and my favorite phrase is</p>
+            <h4 class="h4 text-secondary-700 dark:text-secondary-300 font-semibold">"After all, good code should tell a story, not be a puzzle."</h4>
+          </div>
+
+            <!-- Philosophy -->
+          <div class="mb-2">
+            <p class="text-sm text-surface-500 dark:text-surface-400 mb-2">and my principle is</p>
+            <h5 class="h5 text-orange-700 dark:text-orange-300 font-bold">Keep It Simple, Stupid!</h5>
+          </div>
+
+          <!-- Contact -->
+          <div class="mb-6">
+            <p class="text-sm text-surface-500 dark:text-surface-400 mb-2">and you can contact me by</p>
+            <div class="flex flex-col md:flex-row justify-center gap-2 md:gap-4">
+              <a href="https://github.com/ruanklein" class="btn variant-ghost-primary flex items-center justify-center gap-2 py-3" target="_blank">
+                <Github class="w-5 h-5" />
+                GitHub
+              </a>
+              <a href="https://linkedin.com/in/ruanklein" class="btn variant-ghost-secondary flex items-center justify-center gap-2 py-3" target="_blank">
+                <Linkedin class="w-5 h-5" />
+                LinkedIn
+              </a>
+              <a href="mailto:ruan.klein@gmail.com" class="btn variant-ghost-tertiary flex items-center justify-center gap-2 py-3">
+                <Mail class="w-5 h-5" />
+                Email
+              </a>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <footer class="text-center py-12 text-surface-500 dark:text-surface-400">
+            <div class="mb-4">
+              <p class="text-sm text-surface-500 dark:text-surface-400 mb-1">Thanks for visiting my website</p>
+              <p class="text-sm">
+                Made with <Icon icon="simple-icons:svelte" class="inline w-4 h-4 text-error-500" /> and <Icon icon="simple-icons:tailwindcss" class="inline w-4 h-4 text-primary-500" />
+              </p>
+            </div>
+          </footer>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="mb-12">
-      <!-- About Card -->
-      <div class="card p-8 variant-glass-surface max-w-4xl mx-auto" class:opacity-0={!aboutVisible} class:translate-y-full={!aboutVisible}>
-        <header class="card-header">
-          <h3 class="h2 flex items-center justify-center gap-3 mb-6">
-            <Code class="w-7 h-7 text-primary-500" />
-            About Me
-          </h3>
-        </header>
-        <section class="p-4">
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            Here, I'll briefly share my personal experience with programming and tech.
-            If you're looking for my professional background in companies, feel free to check out my LinkedIn.
-          </p>
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            My journey began in 2008 with my first "Hello World" in C. At the time, I had absolutely no idea what a compiler was. 
-          </p>
-
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            Around the same time, I started exploring GNU/Linux using the legendary Slackware distribution. And let me tell you,
-            configuring X11 manually was a rite of passage.
-          </p>
-
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            From there, I became a self-taught developer, diving deep into Shell scripting, Perl, Python, and the entire Linux ecosystem. 
-          </p>
-
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            Along the way, I've also contributed to a few open source projects. I was a contributor to SlackBuilds.org for a while, 
-            maintaining WinUSB; a tool to create bootable Windows USB drives, as the main maintainer.
-          </p>
-
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            I also contributed with articles, tips, and scripts to various Linux community portals across Latin America.
-          </p>
-          
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            As you can probably tell, I've had a strong connection with Linux and open source throughout my journey. Even though I no longer 
-            use Linux as my main OS (I ended up giving in to Apple because of the Silicon line), I still consider it an excellent system for all kinds of users.
-          </p>
-
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            I also enrolled in university and graduated in Systems Analysis and Development in 2015. It was during that time that I learned 
-            more about how the web works, and where I built my first web projects using PHP and JavaScript.
-          </p>
-
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 text-lg">
-            Over the years, I kept studying and exploring new languages and technologies on my own. These days, I've really been enjoying programming in Golang, 
-            as it reminds me a lot of C, my first language, and the one that sparked my passion for coding.
-          </p>
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed text-lg">
-            Guided by the Unix philosophy and the KISS principle, I strive to build solutions with the lowest possible complexity, 
-            clearly separating each component's responsibilities. This approach makes systems more accessible to both users and fellow developers. 
-          </p>
-
-          <p class="text-surface-600 dark:text-surface-300 leading-relaxed text-lg">
-            After all, good code should tell a story, not be a puzzle.
-          </p>
-        </section>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <div class="card contact-card p-6 variant-glass-secondary" class:opacity-0={!contactVisible} class:translate-y-full={!contactVisible}>
-        <header class="card-header text-center">
-          <h3 class="h3">Let's talk?</h3>
-          <p class="text-surface-600 dark:text-surface-300">
-            Always open to discuss interesting projects and opportunities
-          </p>
-        </header>
-        <section class="p-4">
-          <div class="flex justify-center space-x-4">
-            <a href="https://github.com/ruanklein" class="btn variant-ghost-primary flex items-center gap-2" target="_blank">
-              <Github class="w-5 h-5" />
-              GitHub
-            </a>
-            <a href="https://linkedin.com/in/ruanklein" class="btn variant-ghost-secondary flex items-center gap-2" target="_blank">
-              <Linkedin class="w-5 h-5" />
-              LinkedIn
-            </a>
-            <a href="mailto:ruan.klein@gmail.com" class="btn variant-ghost-tertiary flex items-center gap-2">
-              <Mail class="w-5 h-5" />
-              Email
-            </a>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center mt-12 py-6 text-surface-500 dark:text-surface-400">
-      <p class="text-sm">
-        Made with <Icon icon="simple-icons:svelte" class="inline w-4 h-4 text-error-500" /> and <Icon icon="simple-icons:tailwindcss" class="inline w-4 h-4 text-primary-500" />
-      </p>
-      <a href="/" class="text-xs mt-2">
-        ruan.sh
-      </a>
-    </footer>
   </div>
 </div>
 
@@ -351,15 +207,6 @@
   .card {
     transition: all 0.3s ease;
     transform: translateY(0);
-  }
-
-  /* Stagger entrance animations */
-  .card.opacity-0 {
-    opacity: 0;
-  }
-
-  .card.translate-y-full {
-    transform: translateY(40px);
   }
 
   /* Hero card special effects */
@@ -407,12 +254,6 @@
   .tech-float:nth-child(9) { animation-delay: 4s; }
   .tech-float:nth-child(10) { animation-delay: 4.5s; }
   .tech-float:nth-child(11) { animation-delay: 5s; }
-
-  /* Contact section */
-  .contact-card {
-    position: relative;
-    overflow: hidden;
-  }
 
   /* Button hover enhancements */
   .btn {
@@ -479,104 +320,6 @@
   /* Smooth scroll behavior */
   :global(html) {
     scroll-behavior: smooth;
-  }
-
-  /* Navigation Bar Styles */
-  nav {
-    transition: all 0.3s ease;
-    background: linear-gradient(135deg, 
-      rgba(var(--color-surface-50), 0.7) 0%, 
-      rgba(var(--color-surface-100), 0.6) 50%, 
-      rgba(var(--color-surface-50), 0.7) 100%);
-    box-shadow: 0 8px 32px rgba(var(--color-primary-500), 0.1);
-  }
-
-  :global(.dark) nav {
-    background: linear-gradient(135deg, 
-      rgba(var(--color-surface-900), 0.6) 0%, 
-      rgba(var(--color-surface-800), 0.5) 50%, 
-      rgba(var(--color-surface-900), 0.6) 100%);
-    box-shadow: 0 8px 32px rgba(var(--color-primary-500), 0.2);
-  }
-
-  /* Liquid glass effect on scroll */
-  nav::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, 
-      rgba(255, 255, 255, 0.1) 0%, 
-      transparent 100%);
-    pointer-events: none;
-  }
-
-  :global(.dark) nav::before {
-    background: linear-gradient(180deg, 
-      rgba(255, 255, 255, 0.05) 0%, 
-      transparent 100%);
-  }
-
-  .nav-link {
-    position: relative;
-    transition: all 0.3s ease;
-  }
-
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(135deg, rgb(var(--color-primary-500)), rgb(var(--color-secondary-500)));
-    transition: width 0.3s ease;
-  }
-
-  .nav-link:hover::after {
-    width: 100%;
-  }
-
-  /* Mobile Menu Styles */
-  .mobile-menu {
-    animation: slideDown 0.3s ease-out;
-    background: linear-gradient(135deg, 
-      rgba(var(--color-surface-50), 0.95) 0%, 
-      rgba(var(--color-surface-100), 0.9) 100%);
-    backdrop-filter: blur(20px);
-  }
-
-  :global(.dark) .mobile-menu {
-    background: linear-gradient(135deg, 
-      rgba(var(--color-surface-900), 0.95) 0%, 
-      rgba(var(--color-surface-800), 0.9) 100%);
-  }
-
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .mobile-nav-link {
-    transition: all 0.2s ease;
-  }
-
-  .mobile-nav-link:hover {
-    transform: translateX(4px);
-  }
-
-  /* Section scroll padding for fixed navbar */
-  section {
-    scroll-margin-top: 80px;
-    padding-left: 16px;
   }
 
   /* Enhanced focus states for accessibility */
