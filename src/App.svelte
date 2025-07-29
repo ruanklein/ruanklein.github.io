@@ -43,7 +43,7 @@
             
             <div class="mb-2">
               <p class="text-sm text-surface-500 dark:text-surface-300 mb-1">and I am a</p>
-              <h2 class="h2 text-surface-700 dark:text-surface-200 font-semibold">Software Engineer</h2>
+              <h2 class="h2 text-surface-700 dark:text-surface-100 font-semibold">Software Engineer</h2>
             </div>
             
             <div class="mb-2">

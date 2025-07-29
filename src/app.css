@@ -9,95 +9,107 @@
 body {
   background-attachment: fixed;
   background-image: 
-    /* Vintage glass reflections */ radial-gradient(
-      ellipse 800px 600px at 20% 10%,
-      rgba(212, 165, 116, 0.15) 0%,
-      rgba(212, 165, 116, 0.08) 30%,
+    /* Intense vintage orbs */ radial-gradient(
+      ellipse 1000px 700px at 15% 5%,
+      rgba(212, 165, 116, 0.45) 0%,
+      rgba(212, 165, 116, 0.25) 30%,
+      rgba(184, 134, 89, 0.15) 60%,
+      transparent 85%
+    ),
+    radial-gradient(
+      ellipse 800px 1000px at 85% 95%,
+      rgba(184, 134, 89, 0.4) 0%,
+      rgba(160, 112, 75, 0.25) 35%,
+      rgba(212, 165, 116, 0.12) 65%,
+      transparent 85%
+    ),
+    radial-gradient(
+      ellipse 600px 500px at 70% 20%,
+      rgba(226, 188, 145, 0.35) 0%,
+      rgba(205, 171, 132, 0.2) 40%,
       transparent 70%
     ),
     radial-gradient(
-      ellipse 600px 800px at 80% 90%,
-      rgba(184, 134, 89, 0.12) 0%,
-      rgba(184, 134, 89, 0.06) 35%,
-      transparent 70%
+      ellipse 400px 600px at 30% 80%,
+      rgba(193, 154, 108, 0.3) 0%,
+      rgba(212, 165, 116, 0.15) 50%,
+      transparent 75%
     ),
-    radial-gradient(
-      ellipse 500px 400px at 60% 30%,
-      rgba(226, 188, 145, 0.1) 0%,
-      transparent 60%
-    ),
-    /* Liquid glass shimmer */
-      linear-gradient(
-        45deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.03) 20%,
-        rgba(212, 165, 116, 0.05) 40%,
-        rgba(255, 255, 255, 0.02) 60%,
-        transparent 100%
-      ),
-    linear-gradient(
-      -45deg,
-      transparent 0%,
-      rgba(184, 134, 89, 0.04) 30%,
-      rgba(255, 255, 255, 0.02) 50%,
-      rgba(226, 188, 145, 0.03) 70%,
-      transparent 100%
-    ),
-    /* Vintage glass base */
+    /* Rich vintage base with texture */
       linear-gradient(
         135deg,
-        rgba(252, 248, 243, 0.95) 0%,
-        rgba(247, 237, 225, 0.92) 25%,
-        rgba(240, 224, 207, 0.9) 50%,
-        rgba(247, 237, 225, 0.92) 75%,
-        rgba(252, 248, 243, 0.95) 100%
-      );
+        #f7ede1 0%,
+        #f0e0cd 15%,
+        #e8d4b8 30%,
+        #dcc49c 45%,
+        #d4a574 60%,
+        #dcc49c 75%,
+        #e8d4b8 85%,
+        #f7ede1 100%
+      ),
+    /* Subtle noise texture */
+      radial-gradient(
+        circle at 25% 25%,
+        rgba(255, 255, 255, 0.08) 0%,
+        transparent 50%
+      ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(184, 134, 89, 0.06) 0%,
+      transparent 50%
+    );
 }
 
-/* Dark mode - Vintage glass dark */
+/* Dark mode - Intense vintage dark */
 :global(.dark) body {
   background-image: 
-    /* Dark vintage glass reflections */ radial-gradient(
-      ellipse 800px 600px at 20% 10%,
-      rgba(139, 92, 53, 0.2) 0%,
-      rgba(139, 92, 53, 0.1) 30%,
+    /* Dramatic dark vintage orbs */ radial-gradient(
+      ellipse 1000px 700px at 15% 5%,
+      rgba(139, 92, 53, 0.6) 0%,
+      rgba(139, 92, 53, 0.35) 30%,
+      rgba(101, 67, 42, 0.2) 60%,
+      transparent 85%
+    ),
+    radial-gradient(
+      ellipse 800px 1000px at 85% 95%,
+      rgba(101, 67, 42, 0.55) 0%,
+      rgba(85, 58, 38, 0.35) 35%,
+      rgba(139, 92, 53, 0.18) 65%,
+      transparent 85%
+    ),
+    radial-gradient(
+      ellipse 600px 500px at 70% 20%,
+      rgba(160, 108, 68, 0.45) 0%,
+      rgba(125, 85, 55, 0.25) 40%,
       transparent 70%
     ),
     radial-gradient(
-      ellipse 600px 800px at 80% 90%,
-      rgba(101, 67, 42, 0.18) 0%,
-      rgba(101, 67, 42, 0.08) 35%,
-      transparent 70%
+      ellipse 400px 600px at 30% 80%,
+      rgba(115, 78, 50, 0.4) 0%,
+      rgba(139, 92, 53, 0.2) 50%,
+      transparent 75%
     ),
-    radial-gradient(
-      ellipse 500px 400px at 60% 30%,
-      rgba(160, 108, 68, 0.15) 0%,
-      transparent 60%
-    ),
-    /* Dark liquid glass shimmer */
-      linear-gradient(
-        45deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.02) 20%,
-        rgba(139, 92, 53, 0.08) 40%,
-        rgba(255, 255, 255, 0.01) 60%,
-        transparent 100%
-      ),
-    linear-gradient(
-      -45deg,
-      transparent 0%,
-      rgba(101, 67, 42, 0.06) 30%,
-      rgba(255, 255, 255, 0.01) 50%,
-      rgba(160, 108, 68, 0.04) 70%,
-      transparent 100%
-    ),
-    /* Dark vintage glass base */
+    /* Rich dark vintage base */
       linear-gradient(
         135deg,
-        rgba(41, 37, 36, 0.95) 0%,
-        rgba(55, 48, 46, 0.92) 25%,
-        rgba(68, 56, 53, 0.9) 50%,
-        rgba(55, 48, 46, 0.92) 75%,
-        rgba(41, 37, 36, 0.95) 100%
-      );
+        #292524 0%,
+        #3c2e29 15%,
+        #4a3529 30%,
+        #5d4037 45%,
+        #6d4c37 60%,
+        #5d4037 75%,
+        #4a3529 85%,
+        #292524 100%
+      ),
+    /* Dark noise texture */
+      radial-gradient(
+        circle at 25% 25%,
+        rgba(255, 255, 255, 0.04) 0%,
+        transparent 50%
+      ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(139, 92, 53, 0.08) 0%,
+      transparent 50%
+    );
 }
