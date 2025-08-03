@@ -37,22 +37,22 @@
           
           <div>
             <div class="mb-2">
-              <p class="text-sm text-surface-500 dark:text-surface-300 mb-1">Hi! My name is</p>
+              <p class="text-sm text-surface-500 dark:text-surface-200 mb-1">Hi! My name is</p>
               <h1 class="h1 text-primary-700 dark:text-primary-300 font-bold">RUAN</h1>
             </div>
             
             <div class="mb-2">
-              <p class="text-sm text-surface-500 dark:text-surface-300 mb-1">and I am a</p>
+              <p class="text-sm text-surface-500 dark:text-surface-200 mb-1">and I am a</p>
               <h2 class="h2 text-surface-700 dark:text-surface-100 font-semibold">Software Engineer</h2>
             </div>
             
             <div class="mb-2">
-              <p class="text-sm text-surface-500 dark:text-surface-300 mb-1">and I have</p>
+              <p class="text-sm text-surface-500 dark:text-surface-200 mb-1">and I have</p>
               <span class="badge variant-filled-secondary text-lg font-bold px-4 py-2">+10 years experience</span>
             </div>
             
             <div class="mb-4">
-              <p class="text-sm text-surface-500 dark:text-surface-300 text-center">and I work with the following technologies</p>
+              <p class="text-sm text-surface-500 dark:text-surface-200 text-center">and I work with the following technologies</p>
             </div>
             
             <!-- Technology Icons -->
@@ -148,21 +148,15 @@
 
             </div>
 
-           <!-- Favorite phrase -->
-          <div class="mb-2">
-            <p class="text-sm text-surface-500 dark:text-surface-300 mb-2">and my favorite phrase is</p>
-            <h4 class="h4 text-secondary-700 dark:text-secondary-300 font-semibold">"After all, good code should tell a story, not be a puzzle."</h4>
-          </div>
-
             <!-- Philosophy -->
           <div class="mb-2">
-            <p class="text-sm text-surface-500 dark:text-surface-300 mb-2">and my principle is</p>
+            <p class="text-sm text-surface-500 dark:text-surface-200 mb-2">and my principle is</p>
             <h5 class="h5 text-orange-700 dark:text-orange-300 font-bold">Keep It Simple, Stupid!</h5>
           </div>
 
           <!-- Contact -->
           <div class="mb-6">
-            <p class="text-sm text-surface-500 dark:text-surface-300 mb-2">and you can contact me by</p>
+            <p class="text-sm text-surface-500 dark:text-surface-200 mb-2">and you can contact me by</p>
             <div class="flex flex-col md:flex-row justify-center gap-2 md:gap-4">
               <a href="https://github.com/ruanklein" class="btn variant-ghost-primary flex items-center justify-center gap-2 py-3" target="_blank">
                 <Github class="w-5 h-5" />
@@ -182,8 +176,8 @@
                     <!-- Footer -->
           <footer class="text-center py-12 text-surface-500 dark:text-surface-400">
             <div class="mb-4">
-              <p class="text-sm text-surface-500 dark:text-surface-300 mb-1">Thanks for visiting my website</p>
-              <p class="text-sm text-surface-500 dark:text-surface-300">
+              <p class="text-sm text-surface-500 dark:text-surface-200 mb-1">Thanks for visiting my website</p>
+              <p class="text-sm text-surface-500 dark:text-surface-200">
                 Made with <Icon icon="simple-icons:svelte" class="inline w-4 h-4 text-error-500" /> and <Icon icon="simple-icons:tailwindcss" class="inline w-4 h-4 text-primary-500" />
               </p>
             </div>
