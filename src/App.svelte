@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Github, ExternalLink } from 'lucide-svelte'
+  import { Github, ExternalLink, Linkedin, Mail } from 'lucide-svelte'
   import ProjectModal from './ProjectModal.svelte'
 
   // Import project story components
@@ -67,6 +67,22 @@
           aria-label="GitHub"
         >
           <Github class="w-5 h-5" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ruanklein/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-white/60 hover:text-white transition-colors"
+          aria-label="LinkedIn"
+        >
+          <Linkedin class="w-5 h-5" />
+        </a>
+        <a
+          href="mailto:ruan.klein@gmail.com"
+          class="text-white/60 hover:text-white transition-colors"
+          aria-label="Email"
+        >
+          <Mail class="w-5 h-5" />
         </a>
       </div>
     </header>
