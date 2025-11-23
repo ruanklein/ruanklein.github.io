@@ -23,6 +23,7 @@
     "@iconify/svelte": "^5.1.0",
     "@lucide/svelte": "^0.554.0",
     "@tailwindcss/vite": "^4.1.17",
+    "i18n-js": "^4.5.1",
     "lucide-svelte": "^0.554.0",
     "tailwindcss": "^4.1.17"
   }

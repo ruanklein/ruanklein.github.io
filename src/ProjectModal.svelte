@@ -1,5 +1,6 @@
 <script lang="ts">
   import { X } from 'lucide-svelte'
+  import i18n from './lib/i18n'
 
   export let isOpen = false
   export let projectName = ''
@@ -31,7 +32,7 @@
       >
         <div>
           <h3 class="text-2xl font-bold mb-1">{projectName}</h3>
-          <p class="text-sm text-white/60">Why I built this</p>
+          <p class="text-sm text-white/60">{i18n.t('projects.whyBuilt')}</p>
         </div>
         <button
           on:click={onClose}
