@@ -25,9 +25,14 @@
       storyComponent: SynapSeqStory,
       subProjects: [
         {
+          nameKey: 'synapseq.playground.name',
+          descriptionKey: 'synapseq.playground.description',
+          url: 'https://synapseq.ruan.sh',
+        },
+        {
           nameKey: 'synapseq.hub.name',
           descriptionKey: 'synapseq.hub.description',
-          url: 'https://github.com/ruanklein/synapseq-hub',
+          url: 'https://synapseq-hub.ruan.sh',
         },
       ],
     },
