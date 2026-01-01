@@ -20,9 +20,9 @@ const i18n = new I18n({
     synapseq: {
       name: 'SynapSeq',
       description: 'My brainwave generator project',
-      playground: {
-        name: 'SynapSeq Playground',
-        description: 'An online editor and player for SynapSeq files',
+      site: {
+        name: 'SynapSeq Project',
+        description: 'SynapSeq Project site',
       },
       hub: {
         name: 'SynapSeq Hub',
@@ -92,9 +92,9 @@ const i18n = new I18n({
     synapseq: {
       name: 'SynapSeq',
       description: ' Meu gerador de sequências binaurais',
-      playground: {
-        name: 'SynapSeq Playground',
-        description: 'Um editor e player online para arquivos SynapSeq',
+      site: {
+        name: 'Projeto SynapSeq',
+        description: 'Site do projeto SynapSeq',
       },
       hub: {
         name: 'SynapSeq Hub',
