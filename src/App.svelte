@@ -70,10 +70,10 @@
 
 <main id="top" class="min-h-screen bg-black text-white">
   <!-- Navbar -->
-  <nav class="sticky top-3 z-40 px-3 sm:px-6">
-    <div class="mx-auto max-w-4xl">
+  <nav class="sticky top-3 z-40">
+    <div class="shell">
       <div
-        class="rounded-2xl border border-white/10 bg-black/70 backdrop-blur-md supports-[backdrop-filter]:bg-black/60 shadow-sm shadow-black/40 transition {scrolled
+        class="rounded-2xl border border-white/10 bg-black/70 backdrop-blur-md supports-backdrop-filter:bg-black/60 shadow-sm shadow-black/40 transition {scrolled
           ? 'border-white/15 bg-black/80 shadow-md shadow-black/60'
           : ''}"
       >
@@ -104,7 +104,7 @@
     </div>
   </nav>
 
-  <div class="container mx-auto px-6 py-16 md:py-24 max-w-4xl">
+  <div class="shell py-16 md:py-24">
     <!-- Header -->
     <header class="mb-20">
       <div class="flex items-center gap-6 mb-4">
@@ -159,74 +159,89 @@
       <h2 class="text-3xl md:text-4xl font-bold mb-8">
         {i18n.t('projects.title')}
       </h2>
-      <div class="space-y-6">
+      <div class="grid gap-4 md:gap-5">
         {#each projects as project}
-          <div class="border-l-2 border-white/10 pl-6 space-y-3">
-            <div class="flex items-start justify-between gap-4 py-2">
-              <div class="flex-1">
-                <div class="flex items-center gap-2 mb-1">
-                  <h3 class="text-xl font-semibold">
-                    {i18n.t(project.nameKey)}
-                  </h3>
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-white/40 hover:text-white/60 transition-colors"
-                    aria-label="View on GitHub"
-                  >
-                    <ExternalLink class="w-4 h-4" />
-                  </a>
+          <article
+            class="group rounded-2xl border border-white/10 bg-white/2 transition hover:border-white/15 hover:bg-white/3 {selectedProject ===
+            project.nameKey
+              ? 'border-white/20 bg-white/4'
+              : ''}"
+          >
+            <div class="p-5 sm:p-6">
+              <div class="flex items-start justify-between gap-4">
+                <div class="min-w-0">
+                  <div class="flex items-center gap-2">
+                    <h3 class="text-lg sm:text-xl font-semibold tracking-tight">
+                      {i18n.t(project.nameKey)}
+                    </h3>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center rounded-full border border-white/10 bg-black/30 p-1.5 text-white/60 hover:text-white hover:border-white/20 transition"
+                      aria-label="View on GitHub"
+                    >
+                      <ExternalLink class="w-4 h-4" />
+                    </a>
+                  </div>
+
+                  <p class="mt-1 text-sm text-white/60 leading-relaxed">
+                    {i18n.t(project.descriptionKey)}
+                  </p>
                 </div>
-                <p class="text-sm text-white/60 mb-3">
-                  {i18n.t(project.descriptionKey)}
-                </p>
 
                 <button
                   on:click={() => toggleStory(project.nameKey)}
-                  class="text-sm text-white/50 hover:text-white/70 transition-colors underline decoration-white/20 hover:decoration-white/40"
+                  class="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-1.5 text-xs sm:text-sm text-white/70 hover:text-white hover:border-white/20 hover:bg-white/4 transition"
                 >
                   {i18n.t('projects.readStory')}
+                  <span
+                    aria-hidden="true"
+                    class="text-white/30 transition-transform group-hover:translate-x-0.5"
+                    >→</span
+                  >
                 </button>
               </div>
-            </div>
 
-            {#if project.subProjects}
-              <div class="pl-6 space-y-2 pb-2">
-                {#each project.subProjects as subProject}
-                  <a
-                    href={subProject.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="group/sub flex items-start gap-2 text-white/70 hover:text-white transition-colors"
-                  >
-                    <span class="text-white/30 mt-1">→</span>
-                    <div class="flex-1">
-                      <span class="text-sm font-medium">
-                        {i18n.t(subProject.nameKey)}
-                      </span>
-                      <span class="text-white/40 mx-2">·</span>
-                      <span class="text-sm text-white/50">
-                        {i18n.t(subProject.descriptionKey)}
-                      </span>
-                    </div>
-                    <ExternalLink
-                      class="w-3 h-3 text-white/30 group-hover/sub:text-white/50 shrink-0 mt-1"
-                    />
-                  </a>
-                {/each}
-              </div>
-            {/if}
-          </div>
+              {#if project.subProjects}
+                <div class="mt-4 pt-4 border-t border-white/10">
+                  <div class="space-y-2">
+                    {#each project.subProjects as subProject}
+                      <a
+                        href={subProject.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group/sub flex items-start justify-between gap-4 rounded-xl border border-transparent px-3 py-2 hover:border-white/10 hover:bg-white/3 transition"
+                      >
+                        <div class="min-w-0">
+                          <div
+                            class="text-sm font-medium text-white/80 group-hover/sub:text-white transition"
+                          >
+                            {i18n.t(subProject.nameKey)}
+                          </div>
+                          <div class="text-xs text-white/45">
+                            {i18n.t(subProject.descriptionKey)}
+                          </div>
+                        </div>
+                        <ExternalLink
+                          class="w-4 h-4 text-white/30 group-hover/sub:text-white/50 shrink-0 mt-0.5"
+                        />
+                      </a>
+                    {/each}
+                  </div>
+                </div>
+              {/if}
+            </div>
+          </article>
         {/each}
       </div>
     </section>
   </div>
 
   <!-- Footer -->
-  <footer class="mt-24 pb-10 px-3 sm:px-6">
-    <div class="mx-auto max-w-4xl">
-      <div class="border border-white/10 bg-white/[0.02] rounded-2xl px-6 py-5">
+  <footer class="mt-24 pb-10">
+    <div class="shell">
+      <div class="border border-white/10 bg-white/2 rounded-2xl px-6 py-5">
         <div
           class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
         >

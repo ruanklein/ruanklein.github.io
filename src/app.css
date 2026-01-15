@@ -12,3 +12,7 @@
 body {
   @apply bg-black text-white;
 }
+
+.shell {
+  @apply mx-auto max-w-4xl px-3 sm:px-6;
+}

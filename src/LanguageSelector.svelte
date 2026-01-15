@@ -36,7 +36,7 @@
 <div class="language-selector relative">
   <button
     on:click|stopPropagation={toggleDropdown}
-    class="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-3 py-1.5 text-xs text-white/70 hover:text-white hover:border-white/20 hover:bg-white/[0.04] transition"
+    class="flex items-center gap-2 rounded-full border border-white/10 bg-white/2 px-3 py-1.5 text-xs text-white/70 hover:text-white hover:border-white/20 hover:bg-white/4 transition"
     aria-label={i18n.t('nav.language')}
   >
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
