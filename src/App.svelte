@@ -68,7 +68,16 @@
   }
 </script>
 
-<main id="top" class="min-h-screen bg-black text-white">
+<main id="top" class="relative isolate min-h-screen bg-black text-white">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute inset-0 bg-black"></div>
+    <div
+      class="absolute inset-0 bg-[radial-gradient(1200px_circle_at_15%_5%,rgba(99,102,241,0.14),transparent_60%),radial-gradient(900px_circle_at_85%_0%,rgba(168,85,247,0.12),transparent_55%),radial-gradient(900px_circle_at_50%_85%,rgba(20,184,166,0.10),transparent_60%)]"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black"
+    ></div>
+  </div>
   <!-- Navbar -->
   <nav class="sticky top-3 z-40">
     <div class="shell">
