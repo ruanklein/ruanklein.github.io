@@ -106,51 +106,75 @@
 
   <div class="shell py-16 md:py-24">
     <!-- Header -->
-    <header class="mb-20">
-      <div class="flex items-center gap-6 mb-4">
-        <!-- <img
-          src="/logo.png"
-          alt={i18n.t('header.name')}
-          class="w-16 h-16 md:w-20 md:h-20 rounded-full shadow-lg shadow-white/20"
-        /> -->
-        <h1 class="text-5xl md:text-7xl font-bold tracking-tight">
-          {i18n.t('header.name')}
-        </h1>
-      </div>
-      <p class="text-xl md:text-2xl text-white/70 mb-8">
-        {i18n.t('header.title')}
-      </p>
-      <p class="text-lg text-white/60 max-w-2xl leading-relaxed mb-6">
-        {i18n.t('header.description')}
-      </p>
+    <header class="mb-16 md:mb-20">
+      <div class="rounded-3xl border border-white/10 bg-white/2 p-6 sm:p-8">
+        <div class="flex items-center gap-6">
+          <!-- <img
+            src="/logo.png"
+            alt={i18n.t('header.name')}
+            class="w-16 h-16 md:w-20 md:h-20 rounded-full shadow-lg shadow-white/20"
+          /> -->
+          <h1
+            class="text-5xl md:text-7xl font-bold tracking-tight leading-[0.95]"
+          >
+            <span
+              class="bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent"
+            >
+              {i18n.t('header.name')}
+            </span>
+          </h1>
+        </div>
 
-      <!-- Links -->
-      <div class="flex items-center gap-4">
-        <a
-          href="https://github.com/ruanklein"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-white/60 hover:text-white transition-colors"
-          aria-label="GitHub"
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <span
+            class="inline-flex items-center rounded-full border border-white/10 bg-black/30 px-3 py-1.5 text-sm text-white/75"
+          >
+            {i18n.t('header.title')}
+          </span>
+          <span class="hidden sm:inline h-5 w-px bg-white/10" aria-hidden="true"
+          ></span>
+          <p class="text-sm text-white/50 max-w-2xl">
+            {i18n.t('header.siteName')}
+          </p>
+        </div>
+
+        <p
+          class="mt-6 text-base sm:text-lg text-white/65 max-w-2xl leading-relaxed"
         >
-          <Github class="w-5 h-5" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/ruanklein/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-white/60 hover:text-white transition-colors"
-          aria-label="LinkedIn"
-        >
-          <Linkedin class="w-5 h-5" />
-        </a>
-        <a
-          href="mailto:ruan.klein@gmail.com"
-          class="text-white/60 hover:text-white transition-colors"
-          aria-label="Email"
-        >
-          <Mail class="w-5 h-5" />
-        </a>
+          {i18n.t('header.description')}
+        </p>
+
+        <!-- Links -->
+        <div class="mt-7 flex items-center gap-3">
+          <a
+            href="https://github.com/ruanklein"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full border border-white/10 bg-black/30 p-2 text-white/65 hover:text-white hover:border-white/20 hover:bg-white/5 transition"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <Github class="w-5 h-5" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ruanklein/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full border border-white/10 bg-black/30 p-2 text-white/65 hover:text-white hover:border-white/20 hover:bg-white/5 transition"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+          >
+            <Linkedin class="w-5 h-5" />
+          </a>
+          <a
+            href="mailto:ruan.klein@gmail.com"
+            class="inline-flex items-center justify-center rounded-full border border-white/10 bg-black/30 p-2 text-white/65 hover:text-white hover:border-white/20 hover:bg-white/5 transition"
+            aria-label="Email"
+            title="Email"
+          >
+            <Mail class="w-5 h-5" />
+          </a>
+        </div>
       </div>
     </header>
 
