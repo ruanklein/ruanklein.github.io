@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { Github, ExternalLink, Linkedin, Mail } from 'lucide-svelte'
   import ProjectModal from './ProjectModal.svelte'
   import LanguageSelector from './LanguageSelector.svelte'
@@ -11,11 +12,25 @@
   let selectedProject: string | null = null
   let currentLocale = i18n.locale
   let localeKey = 0 // For forcing component reactivity
+  let scrolled = false
 
   $: {
     i18n.locale = currentLocale
     localeKey++ // Increment to force component re-render
   }
+
+  onMount(() => {
+    const onScroll = () => {
+      scrolled = window.scrollY > 8
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+    }
+  })
 
   const projects = [
     {
@@ -53,22 +68,38 @@
   }
 </script>
 
-<main class="min-h-screen bg-black text-white">
+<main id="top" class="min-h-screen bg-black text-white">
   <!-- Navbar -->
-  <nav
-    class="sticky top-0 bg-black/95 backdrop-blur-sm border-b border-white/10 z-40"
-  >
-    <div class="container mx-auto px-6 py-4 max-w-4xl">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <img
-            src="/logo.png"
-            alt="Ruan Felisbino"
-            class="w-10 h-10 rounded-full shadow-lg shadow-white/20"
-          />
-          <span class="text-lg font-semibold">{i18n.t('header.siteName')}</span>
+  <nav class="sticky top-3 z-40 px-3 sm:px-6">
+    <div class="mx-auto max-w-4xl">
+      <div
+        class="rounded-2xl border border-white/10 bg-black/70 backdrop-blur-md supports-[backdrop-filter]:bg-black/60 shadow-sm shadow-black/40 transition {scrolled
+          ? 'border-white/15 bg-black/80 shadow-md shadow-black/60'
+          : ''}"
+      >
+        <div class="h-12 flex items-center justify-between gap-3 px-3 sm:px-4">
+          <a
+            href="#top"
+            class="group flex items-center gap-2 rounded-full px-2 py-1 -ml-2 text-white/80 hover:text-white transition-colors"
+            aria-label={i18n.t('header.siteName')}
+          >
+            <img
+              src="/logo.png"
+              alt="Ruan Felisbino"
+              class="w-8 h-8 rounded-full ring-1 ring-white/10 shadow-sm shadow-white/10 group-hover:ring-white/20 transition"
+            />
+            <span class="text-sm font-semibold tracking-tight">
+              {i18n.t('header.siteName')}
+            </span>
+          </a>
+
+          <div class="flex items-center gap-2">
+            <LanguageSelector
+              {currentLocale}
+              onLocaleChange={handleLocaleChange}
+            />
+          </div>
         </div>
-        <LanguageSelector {currentLocale} onLocaleChange={handleLocaleChange} />
       </div>
     </div>
   </nav>
@@ -190,15 +221,61 @@
         {/each}
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="mt-32 pt-8 border-t border-white/10">
-      <p class="text-white/40 text-sm">
-        © {new Date().getFullYear()}
-        {i18n.t('header.name')}. {i18n.t('footer.rights')}
-      </p>
-    </footer>
   </div>
+
+  <!-- Footer -->
+  <footer class="mt-24 pb-10 px-3 sm:px-6">
+    <div class="mx-auto max-w-4xl">
+      <div class="border border-white/10 bg-white/[0.02] rounded-2xl px-6 py-5">
+        <div
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+        >
+          <p class="text-white/50 text-sm">
+            © {new Date().getFullYear()}
+            {i18n.t('header.name')}. {i18n.t('footer.rights')}
+          </p>
+
+          <div class="flex items-center gap-4">
+            <a
+              href="https://github.com/ruanklein"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white/50 hover:text-white transition-colors"
+              aria-label="GitHub"
+            >
+              <Github class="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ruanklein/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white/50 hover:text-white transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin class="w-4 h-4" />
+            </a>
+            <a
+              href="mailto:ruan.klein@gmail.com"
+              class="text-white/50 hover:text-white transition-colors"
+              aria-label="Email"
+            >
+              <Mail class="w-4 h-4" />
+            </a>
+
+            <span class="mx-1 h-4 w-px bg-white/10" aria-hidden="true"></span>
+
+            <a
+              href="#top"
+              class="text-sm text-white/50 hover:text-white transition-colors"
+              aria-label={i18n.t('footer.backToTop')}
+            >
+              {i18n.t('footer.backToTop')}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Modal -->
   {#if selectedProject}

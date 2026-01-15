@@ -71,6 +71,7 @@ const i18n = new I18n({
     },
     footer: {
       rights: 'All rights reserved.',
+      backToTop: 'Back to top',
     },
   },
   'pt-BR': {
@@ -143,6 +144,7 @@ const i18n = new I18n({
     },
     footer: {
       rights: 'Todos os direitos reservados.',
+      backToTop: 'Topo',
     },
   },
 })

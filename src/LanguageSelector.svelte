@@ -36,7 +36,7 @@
 <div class="language-selector relative">
   <button
     on:click|stopPropagation={toggleDropdown}
-    class="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
+    class="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-3 py-1.5 text-xs text-white/70 hover:text-white hover:border-white/20 hover:bg-white/[0.04] transition"
     aria-label={i18n.t('nav.language')}
   >
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -47,9 +47,11 @@
         d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
       />
     </svg>
-    <span>{currentLocaleName}</span>
+    <span class="font-medium">{currentLocaleName}</span>
     <svg
-      class="w-3 h-3 transition-transform {isOpen ? 'rotate-180' : ''}"
+      class="w-3 h-3 opacity-70 transition-transform {isOpen
+        ? 'rotate-180'
+        : ''}"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -65,7 +67,7 @@
 
   {#if isOpen}
     <div
-      class="absolute right-0 mt-2 py-2 bg-black border border-white/20 min-w-32 z-50"
+      class="absolute right-0 mt-2 py-2 bg-black/95 backdrop-blur-md border border-white/15 rounded-xl min-w-40 z-50 shadow-lg shadow-black/60"
     >
       {#each locales as locale}
         <button
