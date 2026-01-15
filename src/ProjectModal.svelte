@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onDestroy } from 'svelte'
+  import { fade, scale } from 'svelte/transition'
   import { X } from 'lucide-svelte'
   import i18n from './lib/i18n'
 
@@ -6,44 +8,127 @@
   export let projectName = ''
   export let onClose: () => void
 
-  function handleBackdropClick() {
+  let dialogEl: HTMLDivElement | null = null
+  let previousOverflow: string | null = null
+
+  function close() {
     onClose()
   }
+
+  function handleBackdropClick() {
+    close()
+  }
+
+  function handleKeydown(event: KeyboardEvent) {
+    if (!isOpen) return
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      close()
+    }
+  }
+
+  function lockScroll() {
+    if (typeof document === 'undefined') return
+    if (previousOverflow === null) {
+      previousOverflow = document.documentElement.style.overflow
+      document.documentElement.style.overflow = 'hidden'
+    }
+  }
+
+  function unlockScroll() {
+    if (typeof document === 'undefined') return
+    if (previousOverflow !== null) {
+      document.documentElement.style.overflow = previousOverflow
+      previousOverflow = null
+    }
+  }
+
+  $: if (isOpen) {
+    lockScroll()
+    queueMicrotask(() => dialogEl?.focus())
+  } else {
+    unlockScroll()
+  }
+
+  onDestroy(() => {
+    unlockScroll()
+  })
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 {#if isOpen}
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
   <div
-    class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50"
-    on:click={handleBackdropClick}
-    role="dialog"
-    aria-modal="true"
-    tabindex="-1"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+    transition:fade={{ duration: 140 }}
   >
+    <button
+      type="button"
+      class="absolute inset-0 bg-black/70 backdrop-blur-sm"
+      on:click={handleBackdropClick}
+      aria-label={i18n.t('modal.close')}
+    ></button>
+
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div
-      class="bg-black border border-white/20 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+      bind:this={dialogEl}
+      class="relative w-full max-w-3xl overflow-hidden rounded-2xl border border-white/15 bg-black/80 backdrop-blur-md shadow-xl shadow-black/60"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="project-modal-title"
+      tabindex="-1"
       on:click|stopPropagation
+      transition:scale={{ duration: 160, start: 0.98 }}
     >
       <div
-        class="sticky top-0 bg-black border-b border-white/10 p-6 flex items-start justify-between gap-4"
+        aria-hidden="true"
+        class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
+      ></div>
+
+      <div
+        class="sticky top-0 z-10 border-b border-white/10 bg-black/60 backdrop-blur-md"
       >
-        <div>
-          <h3 class="text-2xl font-bold mb-1">{projectName}</h3>
-          <p class="text-sm text-white/60">{i18n.t('projects.whyBuilt')}</p>
+        <div class="px-6 py-4 flex items-start justify-between gap-4">
+          <div class="min-w-0">
+            <h3
+              id="project-modal-title"
+              class="text-xl sm:text-2xl font-semibold tracking-tight truncate"
+            >
+              {projectName}
+            </h3>
+            <div class="mt-1 flex items-center gap-3">
+              <p class="text-sm text-white/60">{i18n.t('projects.whyBuilt')}</p>
+              <span
+                class="hidden sm:inline h-4 w-px bg-white/10"
+                aria-hidden="true"
+              ></span>
+              <span class="hidden sm:inline text-xs text-white/40">Esc</span>
+            </div>
+          </div>
+
+          <button
+            on:click={close}
+            class="shrink-0 inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 p-2 text-white/70 hover:text-white hover:border-white/20 hover:bg-white/10 transition"
+            aria-label={i18n.t('modal.close')}
+          >
+            <X class="w-5 h-5" />
+          </button>
         </div>
-        <button
-          on:click={onClose}
-          class="text-white/40 hover:text-white transition-colors shrink-0"
-          aria-label="Close modal"
-        >
-          <X class="w-6 h-6" />
-        </button>
       </div>
-      <div class="p-6 prose prose-invert max-w-none">
-        <slot />
+
+      <div
+        class="relative max-h-[75vh] sm:max-h-[78vh] overflow-y-auto overscroll-contain"
+      >
+        <div class="p-6 prose prose-invert max-w-none">
+          <slot />
+        </div>
+        <div
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/70 to-transparent"
+        ></div>
       </div>
     </div>
   </div>

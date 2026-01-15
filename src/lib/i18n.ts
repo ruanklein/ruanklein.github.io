@@ -17,6 +17,9 @@ const i18n = new I18n({
       readStory: 'Read the story',
       whyBuilt: 'Why I built this',
     },
+    modal: {
+      close: 'Close',
+    },
     synapseq: {
       name: 'SynapSeq',
       description: 'My brainwave generator project',
@@ -89,6 +92,9 @@ const i18n = new I18n({
       title: 'Projetos',
       readStory: 'Leia a história',
       whyBuilt: 'Por que construí isso',
+    },
+    modal: {
+      close: 'Fechar',
     },
     synapseq: {
       name: 'SynapSeq',
