@@ -1,0 +1,23 @@
+**Note: This will only work if your Mac has Touch ID hardware and it is set up properly.**
+
+On macOS, when using the `sudo` command, you normally have to enter the administrator or root password.
+
+If you have Touch ID enabled, you can use it instead of typing your password when running any sudo command. This makes the terminal more convenient and better aligned with the system's security features.
+
+### Enable Touch ID for sudo
+
+Run the following command:
+
+```
+sed 's/^#\\(auth\\)/\\1/' /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo
+```
+
+This will create the `/etc/pam.d/sudo` file with the option to use Touch ID for sudo.
+
+### Disable Touch ID for sudo
+
+If you want to disable it, simply remove the file:
+
+```
+sudo rm /etc/pam.d/sudo
+```

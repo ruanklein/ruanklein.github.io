@@ -1,0 +1,137 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-black: #000;
+	--color-white: #fff;
+}
+
+* {
+	@apply antialiased;
+}
+
+body {
+	@apply bg-black text-white;
+}
+
+.blog-markdown {
+	@apply text-[1.02rem] leading-8 text-white/80;
+}
+
+.blog-markdown > :first-child {
+	margin-top: 0;
+}
+
+.blog-markdown > :last-child {
+	margin-bottom: 0;
+}
+
+.blog-markdown h1,
+.blog-markdown h2,
+.blog-markdown h3,
+.blog-markdown h4,
+.blog-markdown h5,
+.blog-markdown h6 {
+	@apply mt-12 mb-4 font-semibold tracking-tight text-white;
+}
+
+.blog-markdown h1 {
+	@apply text-4xl;
+}
+
+.blog-markdown h2 {
+	@apply border-b border-white/10 pb-3 text-3xl;
+}
+
+.blog-markdown h3 {
+	@apply text-2xl;
+}
+
+.blog-markdown h4 {
+	@apply text-xl;
+}
+
+.blog-heading-anchor {
+	@apply inline-flex items-center gap-3 no-underline;
+}
+
+.blog-heading-anchor-icon {
+	@apply text-white/25 opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100;
+}
+
+.blog-markdown p,
+.blog-markdown ul,
+.blog-markdown ol,
+.blog-markdown blockquote,
+.blog-markdown pre,
+.blog-markdown table {
+	@apply my-5;
+}
+
+.blog-markdown strong {
+	@apply font-semibold text-white;
+}
+
+.blog-markdown em {
+	@apply text-white/90;
+}
+
+.blog-markdown a {
+	@apply text-white underline decoration-white/25 underline-offset-4 transition-colors;
+}
+
+.blog-markdown a:hover {
+	@apply text-white decoration-white/50;
+}
+
+.blog-markdown ul {
+	@apply list-disc pl-6;
+}
+
+.blog-markdown ol {
+	@apply list-decimal pl-6;
+}
+
+.blog-markdown li {
+	@apply my-2 pl-1;
+}
+
+.blog-markdown li > ul,
+.blog-markdown li > ol {
+	@apply my-3;
+}
+
+.blog-markdown blockquote {
+	@apply border-l-2 border-white/15 pl-5 text-white/65 italic;
+}
+
+.blog-markdown hr {
+	@apply my-10 border-white/10;
+}
+
+.blog-markdown code {
+	@apply rounded bg-white/8 px-1.5 py-1 text-[0.92em] text-white;
+}
+
+.blog-code-block {
+	@apply my-6 overflow-hidden rounded-xl border border-white/10 bg-white/4;
+}
+
+.blog-code-meta {
+	@apply flex items-center justify-between border-b border-white/10 bg-white/3 px-4 py-2;
+}
+
+.blog-code-lang {
+	@apply text-[0.68rem] tracking-[0.24em] text-white/45 uppercase;
+}
+
+.blog-copy-button {
+	@apply inline-flex items-center gap-2 rounded-md border border-white/10 px-2.5 py-1.5 text-[0.68rem] tracking-[0.2em] text-white/55 uppercase transition-colors hover:border-white/20 hover:text-white;
+}
+
+.blog-markdown pre {
+	@apply m-0 overflow-x-auto border-0 bg-transparent px-5 py-4;
+}
+
+.blog-markdown pre code {
+	@apply bg-transparent p-0 text-sm leading-7 text-white/90;
+}
