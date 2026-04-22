@@ -1,10 +1,25 @@
-import manifestData from '../assets/blog-manifest.json';
+import manifestData from '../../content/blog/manifest.json';
 import type { Component } from 'svelte';
 import type { BlogManifest, BlogPostMeta } from './types';
 
-const postModules = import.meta.glob('/src/lib/content/posts/*.md', {
+const postModules = import.meta.glob('/src/content/blog/posts/*.md', {
 	eager: true
 }) as Record<string, { default: Component }>;
+
+const postComponentsBySlug = Object.fromEntries(
+	Object.entries(postModules)
+		.map(([filePath, module]) => {
+			const fileName = filePath.split('/').pop();
+
+			if (!fileName?.endsWith('.md')) {
+				return null;
+			}
+
+			const slug = fileName.slice(0, -3);
+			return [slug, module.default] as const;
+		})
+		.filter((entry): entry is readonly [string, Component] => entry !== null)
+);
 
 const blogManifest = manifestData as BlogManifest;
 
@@ -17,11 +32,11 @@ export function getPostBySlug(slug: string): BlogPostMeta | null {
 }
 
 export function hasPostContent(slug: string): boolean {
-	return !!postModules[`/src/lib/content/posts/${slug}.md`]?.default;
+	return !!postComponentsBySlug[slug];
 }
 
 export function getPostComponent(slug: string): Component | null {
-	return postModules[`/src/lib/content/posts/${slug}.md`]?.default ?? null;
+	return postComponentsBySlug[slug] ?? null;
 }
 
 export function getAdjacentPosts(slug: string): {
