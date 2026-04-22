@@ -1,24 +1,16 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { page } from '$app/state';
-	import { resolveSelectedTags } from '$lib/blog/content';
-	import type { BlogPostMeta } from '$lib/blog/types';
+	import { getBlogManifest, resolveSelectedTags } from '$lib/blog/content';
 	import BlogListView from '../../views/BlogListView.svelte';
 
-	type BlogIndexPageData = {
-		posts: BlogPostMeta[];
-		tags: string[];
-	};
+	const { posts, tags } = getBlogManifest();
 
-	let { data }: { data: BlogIndexPageData } = $props();
-
-	const selectedTags = $derived(
-		browser ? resolveSelectedTags(page.url.searchParams, data.tags) : []
-	);
+	const selectedTags = $derived(browser ? resolveSelectedTags(page.url.searchParams, tags) : []);
 </script>
 
 <svelte:head>
 	<title>Blog - ruan.sh</title>
 </svelte:head>
 
-<BlogListView posts={data.posts} tags={data.tags} {selectedTags} />
+<BlogListView {posts} {tags} {selectedTags} />

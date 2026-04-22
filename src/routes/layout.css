@@ -135,3 +135,19 @@ body {
 .blog-markdown pre code {
 	@apply bg-transparent p-0 text-sm leading-7 text-white/90;
 }
+
+.blog-markdown .blog-command {
+	@apply my-5 overflow-x-auto rounded-xl border border-white/10 bg-white/4 px-5 py-4;
+}
+
+.blog-markdown .blog-command-code {
+	@apply font-mono text-sm leading-7 text-white/90;
+}
+
+.blog-markdown .blog-command-prefix {
+	@apply mr-2 text-white/55;
+}
+
+.blog-markdown .blog-command-cursor {
+	@apply ml-0.5 inline-block animate-pulse text-white/70;
+}

@@ -8,8 +8,8 @@ const config = {
 		runes: ({ filename }) => (filename.split(/[/\\]/).includes('node_modules') ? undefined : true)
 	},
 	kit: { adapter: adapter() },
-	preprocess: [mdsvex({ extensions: ['.svx', '.md'] })],
-	extensions: ['.svelte', '.svx', '.md']
+	preprocess: [mdsvex({ extensions: ['.svx'] })],
+	extensions: ['.svelte', '.svx']
 };
 
 export default config;

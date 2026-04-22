@@ -1,16 +1,12 @@
 <script lang="ts">
-	import type { BlogPostMeta } from '$lib/blog/types';
+	import { getBlogManifest } from '$lib/blog/content';
 	import HomeView from '../views/HomeView.svelte';
 
-	type HomePageData = {
-		posts: BlogPostMeta[];
-	};
-
-	let { data }: { data: HomePageData } = $props();
+	const { posts } = getBlogManifest();
 </script>
 
 <svelte:head>
 	<title>ruan.sh</title>
 </svelte:head>
 
-<HomeView posts={data.posts} />
+<HomeView {posts} />

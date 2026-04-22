@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { BlogPostMeta } from '../../lib/blog/types';
-	import { buildPostHref, buildBlogHref, resolveLucideIcon } from '../../lib/blog/utils';
+	import { buildPostHref, buildBlogHref } from '../../lib/blog/utils';
 
 	let {
 		post,
@@ -12,7 +12,7 @@
 		showIcon?: boolean;
 	} = $props();
 
-	const IconComponent = $derived(resolveLucideIcon(post.icon));
+	const IconComponent = $derived(post.icon);
 </script>
 
 <article
@@ -33,11 +33,7 @@
 				<div
 					class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[0.6rem] tracking-[0.16em] text-white/55 uppercase transition-colors group-hover:border-white/20 group-hover:text-white/80"
 				>
-					{#if IconComponent}
-						<IconComponent class="h-3.5 w-3.5" />
-					{:else}
-						{post.icon}
-					{/if}
+					<IconComponent class="h-3.5 w-3.5" />
 				</div>
 			{/if}
 		</div>

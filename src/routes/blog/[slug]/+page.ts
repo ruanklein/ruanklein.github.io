@@ -25,8 +25,8 @@ export const load: PageLoad = ({ params }) => {
 	const { previousPost, nextPost } = getAdjacentPosts(params.slug);
 
 	return {
-		post,
-		previousPost,
-		nextPost
+		slug: params.slug,
+		previousSlug: previousPost?.slug ?? null,
+		nextSlug: nextPost?.slug ?? null
 	};
 };

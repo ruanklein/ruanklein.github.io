@@ -1,6 +1,3 @@
-import * as LucideIcons from '@lucide/svelte';
-import type { Component } from 'svelte';
-
 const LANGUAGE_SEPARATOR_REGEX = /[-_]/g;
 
 export function formatLanguageLabel(lang: string): string {
@@ -21,19 +18,4 @@ export function buildBlogHref(nextTags: string[] = []): string {
 
 export function buildPostHref(slug: string): string {
 	return `/blog/${encodeURIComponent(slug)}`;
-}
-
-function toPascalCase(value: string): string {
-	return value
-		.replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-		.replace(/[^a-zA-Z0-9]+/g, ' ')
-		.trim()
-		.split(/\s+/)
-		.map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
-		.join('');
-}
-
-export function resolveLucideIcon(name: string): Component | null {
-	const icons = LucideIcons as unknown as Record<string, Component>;
-	return icons[name] ?? icons[toPascalCase(name)] ?? null;
 }
