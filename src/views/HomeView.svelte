@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ExternalLink } from '@lucide/svelte';
 	import type { BlogPostMeta } from '../lib/blog/types';
-	import { buildBlogHref } from '../lib/blog/utils';
+	import { buildBlogHref, sortPostsByDateDesc } from '../lib/blog/utils';
 	import PostCard from '../components/blog/PostCard.svelte';
 
 	let { posts }: { posts: BlogPostMeta[] } = $props();
@@ -9,7 +9,7 @@
 	const intro =
 		'10+ years building software. Focused on local-first, privacy-focused solutions with strong CLI tooling and automation, applying KISS principles.';
 
-	const latestPosts = $derived([...posts].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 5));
+	const latestPosts = $derived(sortPostsByDateDesc(posts).slice(0, 5));
 </script>
 
 <header class="mb-20">
