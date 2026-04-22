@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { Check, Copy, TriangleAlert } from '@lucide/svelte';
+
 	let {
 		delay = 0,
 		command,
@@ -17,9 +19,10 @@
 
 	let typingTimer: ReturnType<typeof setTimeout> | null = null;
 	let copyTimer: ReturnType<typeof setTimeout> | null = null;
-	let copyLabel = $state('Copy');
+	let copyState = $state<'idle' | 'copied' | 'unavailable'>('idle');
 
 	const promptPrefix = $derived(root ? '#' : '$');
+	const promptRole = $derived(root ? 'root' : 'user');
 	const isTyping = $derived(hasStarted && displayedCommand.length < command.length);
 
 	function clearTypingTimer(): void {
@@ -43,17 +46,44 @@
 	async function copyCommand(): Promise<void> {
 		try {
 			await navigator.clipboard.writeText(command);
-			copyLabel = 'Copied';
+			copyState = 'copied';
 		} catch {
-			copyLabel = 'Unavailable';
+			copyState = 'unavailable';
 		}
 
 		clearCopyTimer();
 		copyTimer = setTimeout(() => {
-			copyLabel = 'Copy';
+			copyState = 'idle';
 			copyTimer = null;
 		}, 1800);
 	}
+
+	function resolveCopyLabel(state: 'idle' | 'copied' | 'unavailable'): string {
+		if (state === 'copied') {
+			return 'Command copied';
+		}
+
+		if (state === 'unavailable') {
+			return 'Clipboard unavailable';
+		}
+
+		return 'Copy command';
+	}
+
+	function resolveCopyIcon(state: 'idle' | 'copied' | 'unavailable') {
+		if (state === 'copied') {
+			return Check;
+		}
+
+		if (state === 'unavailable') {
+			return TriangleAlert;
+		}
+
+		return Copy;
+	}
+
+	const CopyIcon = $derived(resolveCopyIcon(copyState));
+	const copyLabel = $derived(resolveCopyLabel(copyState));
 
 	function observeVisibility(node: HTMLElement): () => void {
 		const startTyping = () => {
@@ -116,24 +146,33 @@
 </script>
 
 <div class="blog-command" {@attach observeVisibility}>
-	<div class="flex items-center justify-between gap-4">
-		<code class="blog-command-code">
-			<span class="blog-command-prefix">{promptPrefix}</span>
-			<span>{displayedCommand}</span>
-			{#if isTyping}
-				<span class="blog-command-cursor" aria-hidden="true">|</span>
-			{/if}
-		</code>
+	<div class="blog-command-shell" data-role={promptRole}>
+		<div class="blog-command-header">
+			<span class="blog-command-dot"></span>
+			<span class="blog-command-dot"></span>
+			<span class="blog-command-dot"></span>
 
-		{#if copy}
-			<button
-				type="button"
-				onclick={copyCommand}
-				class="blog-copy-button shrink-0"
-				aria-label="Copy command"
-			>
-				{copyLabel}
-			</button>
-		{/if}
+			{#if copy}
+				<button
+					type="button"
+					onclick={copyCommand}
+					class="blog-command-copy-button"
+					aria-label={copyLabel}
+					title={copyLabel}
+				>
+					<CopyIcon class="h-3.5 w-3.5" />
+				</button>
+			{/if}
+		</div>
+
+		<div class="blog-command-body">
+			<span class="blog-command-token" aria-hidden="true">{promptPrefix}</span>
+			<code class="blog-command-code">
+				<span>{displayedCommand}</span>
+				{#if isTyping}
+					<span class="blog-command-cursor" aria-hidden="true">|</span>
+				{/if}
+			</code>
+		</div>
 	</div>
 </div>

@@ -137,17 +137,57 @@ body {
 }
 
 .blog-markdown .blog-command {
-	@apply my-5 overflow-x-auto rounded-xl border border-white/10 bg-white/4 px-5 py-4;
+	@apply my-5;
+}
+
+.blog-markdown .blog-command-shell {
+	@apply overflow-hidden rounded-xl border border-white/10 bg-black/25;
+}
+
+.blog-markdown .blog-command-header {
+	@apply relative flex items-center gap-1.5 border-b border-white/10 px-3 py-2;
+}
+
+.blog-markdown .blog-command-dot {
+	@apply h-2 w-2 rounded-full bg-white/20;
+}
+
+.blog-markdown .blog-command-dot:nth-child(1) {
+	@apply bg-red-300/50;
+}
+
+.blog-markdown .blog-command-dot:nth-child(2) {
+	@apply bg-amber-300/55;
+}
+
+.blog-markdown .blog-command-dot:nth-child(3) {
+	@apply bg-emerald-300/55;
+}
+
+.blog-markdown .blog-command-body {
+	@apply flex items-start gap-3 overflow-x-auto px-3 py-3.5;
+}
+
+.blog-markdown .blog-command-token {
+	@apply inline-flex h-6 min-w-6 items-center justify-center rounded-md border border-white/20 bg-white/6 px-1.5 font-mono text-xs leading-none font-semibold;
 }
 
 .blog-markdown .blog-command-code {
-	@apply font-mono text-sm leading-7 text-white/90;
-}
-
-.blog-markdown .blog-command-prefix {
-	@apply mr-2 text-white/55;
+	@apply block min-w-0 flex-1 rounded-none bg-transparent p-0 pr-10 font-mono text-sm leading-7 text-white/90;
 }
 
 .blog-markdown .blog-command-cursor {
 	@apply ml-0.5 inline-block animate-pulse text-white/70;
+}
+
+.blog-markdown .blog-command-copy-button {
+	@apply relative z-10 ml-auto inline-flex h-6 w-6 shrink-0 cursor-pointer items-center justify-center rounded-md border border-white/10 bg-white/5 text-white/55 transition-colors hover:border-white/20 hover:text-white;
+}
+
+.blog-markdown .blog-command-shell[data-role='user'] .blog-command-token {
+	@apply border-emerald-300/35 bg-emerald-400/10 text-emerald-200;
+}
+
+.blog-markdown .blog-command-shell[data-role='root'] .blog-command-token {
+	@apply border-amber-300/35 bg-amber-400/10 text-amber-200;
 }
