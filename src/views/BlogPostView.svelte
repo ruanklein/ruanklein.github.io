@@ -39,7 +39,7 @@
 	</article>
 
 	{#if post.tag.length > 0}
-		<footer class="mt-6 border-t border-white/10 pt-4">
+		<footer class="mt-6 mb-10 border-t border-white/10 pt-4">
 			<div class="flex flex-wrap items-center gap-2">
 				<p class="text-[0.62rem] tracking-[0.2em] text-white/35 uppercase">Tags</p>
 				{#each post.tag as tagName (tagName)}
