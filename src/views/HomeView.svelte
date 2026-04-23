@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { ExternalLink } from '@lucide/svelte';
+	import { ExternalLink, Terminal } from '@lucide/svelte';
 	import type { BlogPostMeta } from '../lib/blog/types';
 	import { buildBlogHref, sortPostsByDateDesc } from '../lib/blog/utils';
+	import FortuneQuote from '../components/FortuneQuote.svelte';
 	import PostCard from '../components/blog/PostCard.svelte';
 
 	let { posts }: { posts: BlogPostMeta[] } = $props();
@@ -14,7 +15,10 @@
 
 <header class="mb-20">
 	<div class="mb-4 flex items-center gap-6">
-		<h1 class="text-5xl font-bold tracking-tight md:text-7xl">Ruan Felisbino</h1>
+		<Terminal class="h-8 w-8 text-white/40" />
+		<h1 class="font-mono text-4xl font-bold tracking-wider text-white/70 md:text-5xl">
+			Ruan Felisbino
+		</h1>
 	</div>
 	<p class="mb-8 text-xl text-white/70 md:text-2xl">Software Engineer</p>
 	<p class="mb-6 max-w-2xl text-lg leading-relaxed text-white/60">{intro}</p>
@@ -50,6 +54,10 @@
 		</a>
 	</div>
 </header>
+
+<div class="mb-18">
+	<FortuneQuote />
+</div>
 
 <section class="max-w-3xl">
 	<div class="mb-8 flex items-end justify-between gap-4">
