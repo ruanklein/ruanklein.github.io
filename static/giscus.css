@@ -1,0 +1,20 @@
+:root {
+  --color-canvas-default: transparent;
+  --color-fg-default: rgba(255, 255, 255, 0.85);
+  --color-fg-muted: rgba(255, 255, 255, 0.55);
+
+  --color-border-default: rgba(255, 255, 255, 0.08);
+
+  --color-input-bg: rgba(255, 255, 255, 0.02);
+  --color-input-border: rgba(255, 255, 255, 0.12);
+  --color-input-border-focus: rgba(255, 255, 255, 0.25);
+
+  --color-btn-primary-bg: rgba(255, 255, 255, 0.05);
+  --color-btn-primary-border: rgba(255, 255, 255, 0.15);
+  --color-btn-primary-text: rgba(255, 255, 255, 0.85);
+
+  --color-btn-primary-hover-bg: rgba(255, 255, 255, 0.12);
+  --color-btn-primary-hover-border: rgba(255, 255, 255, 0.25);
+
+  --color-accent-fg: #ffffff;
+}
