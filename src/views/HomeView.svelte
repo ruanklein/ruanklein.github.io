@@ -15,7 +15,7 @@
 
 <header class="mb-20">
 	<div class="mb-4 flex items-center gap-6">
-		<Terminal class="h-8 w-8 text-white/40" />
+		<Terminal class="blink h-8 w-8 text-white/40" />
 		<h1 class="font-mono text-4xl font-bold tracking-wider text-white/70 md:text-5xl">
 			Ruan Felisbino
 		</h1>
@@ -83,3 +83,20 @@
 		</a>
 	</div>
 </section>
+
+<style>
+	@keyframes blink {
+		0%,
+		50% {
+			opacity: 1;
+		}
+		51%,
+		100% {
+			opacity: 0;
+		}
+	}
+
+	:global(.blink) {
+		animation: blink 1s step-end infinite;
+	}
+</style>
