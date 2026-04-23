@@ -54,5 +54,22 @@
 		</footer>
 	{/if}
 
+	<script
+		src="https://giscus.app/client.js"
+		data-repo="ruanklein/ruanklein.github.io"
+		data-repo-id="R_kgDOQSbxGw"
+		data-category="Blog"
+		data-category-id="DIC_kwDOQSbxG84C7d0O"
+		data-mapping="pathname"
+		data-strict="0"
+		data-reactions-enabled="1"
+		data-emit-metadata="0"
+		data-input-position="bottom"
+		data-theme="transparent_dark"
+		data-lang="en"
+		crossorigin="anonymous"
+		async
+	></script>
+
 	<BlogPager {previousPost} {nextPost} />
 </section>
