@@ -20,8 +20,10 @@
 			Ruan Felisbino
 		</h1>
 	</div>
-	<p class="mb-8 text-xl text-white/70 md:text-2xl">Software Engineer</p>
-	<p class="mb-6 max-w-2xl text-lg leading-relaxed text-white/60">{intro}</p>
+
+	<div class="mb-4">
+		<FortuneQuote />
+	</div>
 
 	<div class="flex items-center gap-4">
 		<a
@@ -54,10 +56,6 @@
 		</a>
 	</div>
 </header>
-
-<div class="mb-18">
-	<FortuneQuote />
-</div>
 
 <section class="max-w-3xl">
 	<div class="mb-8 flex items-end justify-between gap-4">
