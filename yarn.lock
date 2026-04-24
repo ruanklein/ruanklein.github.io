@@ -682,6 +682,11 @@ sade@^1.7.4:
   dependencies:
     mri "^1.1.0"
 
+schema-dts@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/schema-dts/-/schema-dts-1.1.5.tgz#9237725d305bac3469f02b292a035107595dc324"
+  integrity sha512-RJr9EaCmsLzBX2NDiO5Z3ux2BVosNZN5jo0gWgsyKvxKIUL5R3swNvoorulAeL9kLB0iTSX7V6aokhla2m7xbg==
+
 set-cookie-parser@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/set-cookie-parser/-/set-cookie-parser-3.1.0.tgz#e0b1d94c8660c68e6a24dc4e2b5c9e955ccf7e28"
@@ -711,6 +716,13 @@ svelte-check@^4.4.6:
     fdir "^6.2.0"
     picocolors "^1.0.0"
     sade "^1.7.4"
+
+svelte-seo@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/svelte-seo/-/svelte-seo-2.0.0.tgz#7bc76ea94e609114ff70b0c6f62d3598758f46e5"
+  integrity sha512-taLhDc7tqxKLhUlVEqzK4McowtQtmCtyJFs4cuH68rBWJF9TYBpIkjWQM6mnOIu9Zxq9jqMO+EvRqiNK4TzADw==
+  dependencies:
+    schema-dts "^1.1.5"
 
 svelte@^5.55.2:
   version "5.55.4"
