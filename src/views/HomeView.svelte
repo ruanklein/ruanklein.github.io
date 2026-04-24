@@ -7,18 +7,13 @@
 
 	let { posts }: { posts: BlogPostMeta[] } = $props();
 
-	const intro =
-		'10+ years building software. Focused on local-first, privacy-focused solutions with strong CLI tooling and automation, applying KISS principles.';
-
 	const latestPosts = $derived(sortPostsByDateDesc(posts).slice(0, 5));
 </script>
 
 <header class="mb-20">
 	<div class="mb-4 flex items-center gap-6">
 		<Terminal class="blink h-8 w-8 text-white/40" />
-		<h1 class="font-mono text-4xl font-bold tracking-wider text-white/70 md:text-5xl">
-			Ruan Felisbino
-		</h1>
+		<h1 class="font-mono text-4xl font-bold tracking-wider text-white/70 md:text-5xl">./ruan.sh</h1>
 	</div>
 
 	<div class="mb-4">
