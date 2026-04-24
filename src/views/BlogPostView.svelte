@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Component } from 'svelte';
+	import SvelteSeo from 'svelte-seo';
 	import { ArrowLeft } from '@lucide/svelte';
 	import { enhanceMarkdown } from '../lib/blog/enhance-markdown';
 	import type { BlogPostMeta } from '../lib/blog/types';
@@ -18,6 +19,37 @@
 		nextPost: BlogPostMeta | null;
 	} = $props();
 </script>
+
+<SvelteSeo
+	title="{post.title} - ruan.sh"
+	description={post.preview}
+	canonical={`https://ruan.sh/blog/${post.slug}`}
+	openGraph={{
+		title: post.title,
+		description: post.preview,
+		url: `https://ruan.sh/blog/${post.slug}`,
+		type: 'article',
+		images: [
+			{
+				url: 'https://ruan.sh/rsh.png',
+				width: 400,
+				height: 400,
+				alt: post.title
+			}
+		],
+		article: {
+			published_time: new Date(post.date).toISOString(),
+			tag: post.tag
+		}
+	}}
+	twitter={{
+		card: 'summary',
+		title: post.title,
+		description: post.preview,
+		image: 'https://ruan.sh/rsh.png',
+		imageAlt: post.title
+	}}
+/>
 
 <section class="max-w-3xl">
 	<a
