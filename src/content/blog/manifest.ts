@@ -1,4 +1,4 @@
-import { Terminal } from '@lucide/svelte';
+import { Terminal, Sparkles } from '@lucide/svelte';
 import type { BlogManifest } from '../../lib/blog/types';
 import SudoTouchIdPost from './posts/sudo-touch-id.svx';
 import OllamaTailscaleMacosPost from './posts/ollama-tailscale-macos.svx';
@@ -21,7 +21,7 @@ export const blogManifest: BlogManifest = {
 			date: '2026-04-28',
 			preview: 'A guide on how to set up Ollama on Tailscale on macOS.',
 			tag: ['setup', 'ai'],
-			icon: Terminal,
+			icon: Sparkles,
 			component: OllamaTailscaleMacosPost
 		}
 	]
