@@ -1,0 +1,95 @@
+<script>
+	import Command from '../../../components/blog/Command.svelte';
+	import MultiLineContent from '../../../components/blog/MultiLineContent.svelte';
+
+	let xml = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+	"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>setenv.ollama</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>sh</string>
+		<string>-c</string>
+		<string>export OLLAMA_HOST=0.0.0.0</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+</dict>
+</plist>`;
+</script>
+
+This guide will walk you through setting up Ollama on your Mac and configuring it to be accessible across your network using Tailscale.
+
+## Prerequisites
+
+First, you need to install Tailscale:
+[https://www.tailscale.com](https://www.tailscale.com)
+
+### Tailscale
+
+Tailscale serves as a secure, zero-config mesh VPN.
+
+In this context, its purpose is to create a private, encrypted network between your Mac (where Ollama is running) and other machines you use (clients).
+
+This allows you to securely access the Ollama API, which hosts your Large Language Models (LLMs) from any location on the internet, as if those other machines were on the same local network.
+
+It bridges the gap, enabling remote devices to communicate directly with your local Ollama service.
+
+## Installation Steps
+
+1.  **Install Ollama:**
+    Once you have created an account and installed Tailscale, install Ollama on your Mac using Homebrew:
+    <Command
+	    delay={24}
+	    command={"brew install ollama"}
+    />
+2.  **Download a Model:**
+    Install a model of your preference before proceeding. You can check the available models here:
+    [https://ollama.com/search](https://ollama.com/search)
+
+## Configuring the Environment Variable
+
+Before starting Ollama as an API service via Homebrew, you must set the environment variable `OLLAMA_HOST` to `0.0.0.0`.
+
+This adjustment is necessary so that other machines connected via Tailscale can access the Ollama API. Without this change, other machines will not be able to connect to the Ollama API.
+
+### 1. Create the Launch Agent File
+
+Create the file `~/Library/LaunchAgents/setenv.ollama.plist` with the following content:
+
+<MultiLineContent
+  content={xml}
+/>
+
+### 2. Load the Configuration
+
+Load the new file using `launchctl`:
+<Command
+  delay={24}
+  command={"launchctl load ~/Library/LaunchAgents/setenv.ollama.plist"}
+/>
+
+### 3. Start the Ollama Service
+
+You can now start Ollama as an API service:
+<Command
+  delay={24}
+  command={"brew services start ollama"}
+/>
+
+## Testing Connectivity
+
+After the service has started, on another machine with Tailscale configured on the same account, perform a test connection:
+
+<Command
+  delay={24}
+  command={"curl http://{HOST}.tail{ID}.ts.net:11434/api/chat -d '{\"model\": \"{MODEL}\", \"messages\": [{ \"role\": \"user\", \"content\": \"Hello!\" }]}'"}
+/>
+
+**Instructions for Testing:**
+*   Replace `{HOST}` with the host provided by Tailscale.
+*   Replace `{ID}` with the generated ID.
+*   Replace `{MODEL}` with the model you installed via Ollama.
