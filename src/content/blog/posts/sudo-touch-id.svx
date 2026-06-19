@@ -14,7 +14,7 @@ Run the following command:
 
 <Command
 	delay={24}
-	command={"sed 's/^#\\(auth\\)/\\1/' /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo"}
+	command={"sed 's/^#\\(auth\\)/\\1/' /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local"}
 />
 
 This will create the `/etc/pam.d/sudo` file with the option to use Touch ID for sudo.
