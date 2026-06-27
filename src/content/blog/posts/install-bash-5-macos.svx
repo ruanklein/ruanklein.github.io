@@ -1,0 +1,25 @@
+<script>
+	import Command from '../../../components/blog/Command.svelte';
+</script>
+
+macOS still includes Bash 3.2, which was the last version released under the GNU General Public License version 2 (GPLv2). Starting with Bash 4.0, Bash moved to GPLv3, a license Apple does not use for the version bundled with macOS.
+
+As a result, the system-provided `/bin/bash` remains on the older 3.x release. You can install Bash 5.x separately using Homebrew without replacing the system version.
+
+## Install Bash
+
+Install the current Bash release available from Homebrew:
+
+<Command delay={24} command="brew install bash" />
+
+## Verify the installed version
+
+Check the Bash version available in your `PATH`:
+
+<Command delay={24} command="bash --version" />
+
+The first line of the output should report Bash 5.x. If it still reports version 3.2, your shell is resolving the system-provided `/bin/bash` first. You can verify the Homebrew installation directly with:
+
+<Command delay={24} command={'$(brew --prefix)/bin/bash --version'} />
+
+This installs the newer Bash alongside the macOS version and leaves `/bin/bash` unchanged.

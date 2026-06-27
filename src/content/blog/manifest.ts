@@ -1,5 +1,6 @@
 import { Terminal, Sparkles } from '@lucide/svelte';
 import type { BlogManifest } from '../../lib/blog/types';
+import InstallBash5MacosPost from './posts/install-bash-5-macos.svx';
 import SudoTouchIdPost from './posts/sudo-touch-id.svx';
 import OllamaTailscaleMacosPost from './posts/ollama-tailscale-macos.svx';
 
@@ -23,6 +24,15 @@ export const blogManifest: BlogManifest = {
 			tag: ['setup', 'ai'],
 			icon: Sparkles,
 			component: OllamaTailscaleMacosPost
+		},
+		{
+			slug: 'install-bash-5-macos',
+			title: 'Install Bash 5.x on macOS',
+			date: '2026-06-27',
+			preview: 'A guide on how to install and verify Bash 5.x on macOS using Homebrew.',
+			tag: ['cli', 'setup'],
+			icon: Terminal,
+			component: InstallBash5MacosPost
 		}
 	]
 };
