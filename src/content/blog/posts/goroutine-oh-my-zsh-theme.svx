@@ -1,14 +1,13 @@
 <script>
 	import Command from '../../../components/blog/Command.svelte';
+	import goroutine from '$lib/assets/goroutine-oh-my-zsh-theme/goroutine.png';
 </script>
 
 I made a new Oh My Zsh theme called [`goroutine`](https://github.com/ruanklein/omz).
 
 It started with the built-in `apple` theme as a reference, but I wanted something closer to Go's practical style: bright, minimal, and focused on the context that matters while working.
 
-```text
- ~/src go 1.26.0 python 3.13.1 node 22.14.0 main v1.4.0
-```
+<img src={goroutine} alt="Goroutine Oh My Zsh prompt" />
 
 The prompt shows the current directory, detected runtimes, and Git context in a single line. Command input is intentionally left unprefixed.
 
