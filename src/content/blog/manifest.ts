@@ -3,6 +3,7 @@ import type { BlogManifest } from '../../lib/blog/types';
 import InstallBash5MacosPost from './posts/install-bash-5-macos.svx';
 import SudoTouchIdPost from './posts/sudo-touch-id.svx';
 import OllamaTailscaleMacosPost from './posts/ollama-tailscale-macos.svx';
+import GoroutineOhMyZshThemePost from './posts/goroutine-oh-my-zsh-theme.svx';
 
 export const blogManifest: BlogManifest = {
 	tags: ['setup', 'cli', 'ai'],
@@ -33,6 +34,15 @@ export const blogManifest: BlogManifest = {
 			tag: ['cli', 'setup'],
 			icon: Terminal,
 			component: InstallBash5MacosPost
+		},
+		{
+			slug: 'goroutine-oh-my-zsh-theme',
+			title: 'Goroutine: a minimal Oh My Zsh theme',
+			date: '2026-08-07',
+			preview: 'A bright, minimal Oh My Zsh theme inspired by Go.',
+			tag: ['cli'],
+			icon: Terminal,
+			component: GoroutineOhMyZshThemePost
 		}
 	]
 };
