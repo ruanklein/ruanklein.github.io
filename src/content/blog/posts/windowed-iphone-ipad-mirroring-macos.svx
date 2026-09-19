@@ -1,0 +1,41 @@
+<script>
+	import Command from '../../../components/blog/Command.svelte';
+	import PostImage from '../../../components/blog/PostImage.svelte';
+	import airplayWindow from '$lib/assets/airplay-macOS27.png';
+</script>
+
+macOS 27+ includes an undocumented feature flag that lets iPhone and iPad mirroring run in its own window. It is a small but welcome change: the mirrored device can now sit alongside your apps instead of taking over the usual AirPlay experience.
+
+Because this is an undocumented system setting, it may change or disappear in a future macOS update. Use it only if you are comfortable enabling experimental features.
+
+<PostImage
+	src={airplayWindow}
+	alt="An iPhone mirrored in its own window on a macOS desktop"
+	width={3440}
+	height={1440}
+	caption="An iPhone mirrored in a standalone macOS window."
+/>
+
+## Enable windowed mirroring
+
+Create the feature-flags directory, then enable the AirPlay receiver window setting:
+
+<Command delay={24} command="sudo mkdir -p /Library/Preferences/FeatureFlags/Domain" />
+
+<Command
+	delay={24}
+	command="sudo defaults write /Library/Preferences/FeatureFlags/Domain/ControlCenter APReceiverInWindow -dict Enabled -bool true"
+/>
+
+Restart your Mac for the change to take effect. After it starts again, mirror an iPhone or iPad as usual and macOS will open the receiver in a separate window.
+
+## Restore the previous behavior
+
+To remove the feature flag and return to the previous AirPlay behavior, run:
+
+<Command
+	delay={24}
+	command="sudo defaults delete /Library/Preferences/FeatureFlags/Domain/ControlCenter APReceiverInWindow"
+/>
+
+Restart your Mac once more to apply the rollback.

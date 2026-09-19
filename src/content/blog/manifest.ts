@@ -3,7 +3,7 @@ import type { BlogManifest } from '../../lib/blog/types';
 import InstallBash5MacosPost from './posts/install-bash-5-macos.svx';
 import SudoTouchIdPost from './posts/sudo-touch-id.svx';
 import OllamaTailscaleMacosPost from './posts/ollama-tailscale-macos.svx';
-import GoroutineOhMyZshThemePost from './posts/goroutine-oh-my-zsh-theme.svx';
+import WindowedIphoneIpadMirroringMacosPost from './posts/windowed-iphone-ipad-mirroring-macos.svx';
 
 export const blogManifest: BlogManifest = {
 	tags: ['setup', 'cli', 'ai'],
@@ -36,13 +36,13 @@ export const blogManifest: BlogManifest = {
 			component: InstallBash5MacosPost
 		},
 		{
-			slug: 'goroutine-oh-my-zsh-theme',
-			title: 'Goroutine: a minimal Oh My Zsh theme',
-			date: '2026-08-07',
-			preview: 'A bright, minimal Oh My Zsh theme inspired by Go.',
-			tag: ['cli'],
+			slug: 'windowed-iphone-ipad-mirroring-macos',
+			title: 'Enable iPhone and iPad Mirroring in a macOS Window',
+			date: '2026-09-19',
+			preview: 'Enable macOS 27+ windowed mirroring for iPhone and iPad.',
+			tag: ['setup'],
 			icon: Terminal,
-			component: GoroutineOhMyZshThemePost
+			component: WindowedIphoneIpadMirroringMacosPost
 		}
 	]
 };

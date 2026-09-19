@@ -10,13 +10,13 @@
 			</span>
 
 			<a
-				href="https://buymeacoffee.com/ruankleinb"
+				href="https://github.com/sponsors/ruanklein"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="flex items-center gap-2 text-[13px] font-medium text-white/80 transition-opacity hover:opacity-70"
 			>
 				<Heart class="h-4 w-4" />
-				Buy me a coffee
+				Sponsor me on GitHub
 			</a>
 		</div>
 	</div>
