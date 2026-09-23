@@ -15,10 +15,6 @@
 	const Content = $derived(getPostComponent(data.slug));
 </script>
 
-<svelte:head>
-	<title>{post?.title ?? 'Blog'} - ruan.sh</title>
-</svelte:head>
-
 {#if post && Content}
 	<BlogPostView {post} {Content} {previousPost} {nextPost} />
 {/if}
