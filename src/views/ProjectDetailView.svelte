@@ -1,10 +1,18 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { Go } from '@dev.icons/svelte/mono';
-	import { ArrowLeft, ArrowUpRight, ExternalLink } from '@lucide/svelte';
-	import type { Project } from '../lib/projects';
+	import { ArrowLeft, ArrowUpRight, ExternalLink, GitFork, LockKeyhole } from '@lucide/svelte';
+	import type { Project, ProjectType } from '../lib/projects';
 
 	let { project }: { project: Project } = $props();
+
+	function resolveHeroClass(type: ProjectType): string {
+		if (type === 'proprietary') {
+			return 'border-amber-200/20 bg-gradient-to-br from-amber-50/[0.09] via-white/[0.03] to-transparent';
+		}
+
+		return 'border-white/10 bg-gradient-to-br from-white/[0.09] via-white/[0.03] to-transparent';
+	}
 </script>
 
 <article class="max-w-4xl">
@@ -17,7 +25,7 @@
 	</a>
 
 	<header
-		class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.09] via-white/[0.03] to-transparent p-8 md:p-12"
+		class={`relative overflow-hidden rounded-2xl border p-8 md:p-12 ${resolveHeroClass(project.type)}`}
 	>
 		<div class="absolute -top-24 -right-20 h-64 w-64 rounded-full bg-white/[0.05] blur-3xl"></div>
 		<div
@@ -37,6 +45,21 @@
 				<span class="text-white/20">/</span>
 				<span>{project.slug}</span>
 			</div>
+			{#if project.type === 'proprietary'}
+				<div
+					class="mb-5 inline-flex items-center gap-1.5 rounded-full border border-amber-200/25 bg-amber-200/[0.08] px-2.5 py-1 text-[0.65rem] tracking-[0.18em] text-amber-100/75 uppercase"
+				>
+					<LockKeyhole class="h-3 w-3" />
+					Proprietary
+				</div>
+			{:else}
+				<div
+					class="mb-5 inline-flex items-center gap-1.5 rounded-full border border-emerald-200/20 bg-emerald-200/[0.06] px-2.5 py-1 text-[0.65rem] tracking-[0.18em] text-emerald-100/65 uppercase"
+				>
+					<GitFork class="h-3 w-3" />
+					Open source
+				</div>
+			{/if}
 			<h1 class="max-w-3xl text-5xl font-bold tracking-tight text-white md:text-7xl">
 				{project.name}
 			</h1>

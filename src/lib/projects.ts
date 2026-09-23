@@ -3,9 +3,12 @@ export type ProjectStat = {
 	value: string;
 };
 
+export type ProjectType = 'open-source' | 'proprietary';
+
 export type Project = {
 	slug: string;
 	name: string;
+	type: ProjectType;
 	language: string;
 	tagline: string;
 	summary: string;
@@ -22,6 +25,7 @@ export const projects: Project[] = [
 	{
 		slug: 'synapseq',
 		name: 'SynapSeq',
+		type: 'open-source',
 		language: 'Go',
 		tagline: 'Sound, defined as text.',
 		summary:
@@ -47,6 +51,7 @@ export const projects: Project[] = [
 	{
 		slug: 'fmgo',
 		name: 'fmgo',
+		type: 'open-source',
 		language: 'Go',
 		tagline: 'Go, meet Apple’s Foundation Models CLI.',
 		summary:
@@ -70,6 +75,7 @@ export const projects: Project[] = [
 	{
 		slug: 'fm-chat',
 		name: 'FM Chat',
+		type: 'open-source',
 		language: 'Go',
 		tagline: 'A focused macOS chat for on-device AI.',
 		summary:
