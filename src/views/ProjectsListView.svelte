@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { Go } from '@dev.icons/svelte/mono';
 	import { ArrowUpRight, FolderGit2 } from '@lucide/svelte';
 	import type { Project } from '../lib/projects';
 
@@ -36,9 +38,22 @@
 						<p class="mt-2 text-sm text-white/45">{project.tagline}</p>
 						<p class="mt-3 max-w-2xl leading-7 text-white/60">{project.summary}</p>
 					</div>
-					<ArrowUpRight
-						class="h-5 w-5 shrink-0 text-white/35 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
-					/>
+					<div class="flex shrink-0 flex-col items-end gap-4">
+						<div
+							class="flex h-11 w-11 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]"
+							title={project.language}
+						>
+							{#if browser}
+								<Go size={28} title={project.language} />
+							{:else}
+								<span class="font-mono text-xs text-white/60" aria-hidden="true">Go</span>
+							{/if}
+							<span class="sr-only">{project.language}</span>
+						</div>
+						<ArrowUpRight
+							class="h-5 w-5 text-white/35 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
+						/>
+					</div>
 				</div>
 			</a>
 		{/each}

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { Go } from '@dev.icons/svelte/mono';
 	import { ArrowLeft, ArrowUpRight, ExternalLink } from '@lucide/svelte';
 	import type { Project } from '../lib/projects';
 
@@ -18,6 +20,17 @@
 		class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.09] via-white/[0.03] to-transparent p-8 md:p-12"
 	>
 		<div class="absolute -top-24 -right-20 h-64 w-64 rounded-full bg-white/[0.05] blur-3xl"></div>
+		<div
+			class="absolute top-8 right-8 flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/75 md:top-12 md:right-12"
+			title={project.language}
+		>
+			{#if browser}
+				<Go size={42} title={project.language} />
+			{:else}
+				<span class="font-mono text-sm" aria-hidden="true">Go</span>
+			{/if}
+			<span class="sr-only">{project.language}</span>
+		</div>
 		<div class="relative">
 			<div class="mb-6 flex items-center gap-3 text-sm tracking-[0.3em] text-white/40 uppercase">
 				<span>Project</span>

@@ -6,6 +6,7 @@ export type ProjectStat = {
 export type Project = {
 	slug: string;
 	name: string;
+	language: string;
 	tagline: string;
 	summary: string;
 	overview: string;
@@ -21,6 +22,7 @@ export const projects: Project[] = [
 	{
 		slug: 'synapseq',
 		name: 'SynapSeq',
+		language: 'Go',
 		tagline: 'Sound, defined as text.',
 		summary:
 			'Text-driven audio sequencer for creating evolving audio sequences with tones, rhythms, noise, music, ambience, effects, and transitions.',
@@ -45,6 +47,7 @@ export const projects: Project[] = [
 	{
 		slug: 'fmgo',
 		name: 'fmgo',
+		language: 'Go',
 		tagline: 'Go, meet Apple’s Foundation Models CLI.',
 		summary:
 			'A Go interface for Apple’s Foundation Models CLI (`fm`) that exposes native responses, streaming, structured output, and more.',
@@ -67,6 +70,7 @@ export const projects: Project[] = [
 	{
 		slug: 'fm-chat',
 		name: 'FM Chat',
+		language: 'Go',
 		tagline: 'A focused macOS chat for on-device AI.',
 		summary:
 			'A small, native-feeling macOS desktop chat that demonstrates the fmgo library and Apple’s on-device Foundation Models.',

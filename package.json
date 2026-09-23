@@ -32,6 +32,7 @@
 		"vite": "^8.0.7"
 	},
 	"dependencies": {
+		"@dev.icons/svelte": "^1.1.0",
 		"@fontsource/fira-code": "^5.2.7",
 		"@fontsource/ibm-plex-sans": "^5.2.8"
 	}
