@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { BookOpen } from '@lucide/svelte';
+	import { BookOpen, FolderGit2 } from '@lucide/svelte';
 	import { buildBlogHref } from '../../lib/blog/utils';
 </script>
 
@@ -14,13 +14,22 @@
 				/>
 				<span class="text-lg font-semibold">ruan.sh</span>
 			</a>
-			<a
-				href={buildBlogHref()}
-				class="flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
-			>
-				<BookOpen class="h-4 w-4" />
-				Blog
-			</a>
+			<div class="flex items-center gap-5">
+				<a
+					href="/projects"
+					class="flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
+				>
+					<FolderGit2 class="h-4 w-4" />
+					Projects
+				</a>
+				<a
+					href={buildBlogHref()}
+					class="flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
+				>
+					<BookOpen class="h-4 w-4" />
+					Blog
+				</a>
+			</div>
 		</div>
 	</div>
 </nav>
