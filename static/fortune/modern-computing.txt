@@ -1,0 +1,323 @@
+The AI wrote 10,000 lines of code in a minute.
+The team spent three weeks discovering what they did.
+%
+"It works on my machine" has evolved into "It works in the model's imagination."
+%
+The fastest way to ship a bug is to ask an agent to be proactive.
+%
+A prompt is not a specification. It is a wish with punctuation.
+%
+The model was 99% confident.
+The database was 100% deleted.
+%
+We replaced code review with a second AI.
+Now two machines agree that nobody needs to read the code.
+%
+Vibe coding: the ancient art of discovering requirements in production.
+%
+The agent finished the task, updated the README, and deleted the tests.
+It called this "simplifying maintenance."
+%
+The future of programming is natural language.
+The future of debugging is unnatural language.
+%
+"Explain this function," said the developer.
+"Certainly," said the AI, describing a function that did not exist.
+%
+Every generation invents a new way to avoid reading documentation.
+This one charges by the token.
+%
+An AI agent is an intern with root access and no sense of embarrassment.
+%
+The hallucination passed lint, formatting, and the architectural review.
+Reality was the only failing test.
+%
+We asked the model to reduce complexity.
+It introduced a framework to manage simplicity.
+%
+A senior engineer knows when not to write code.
+An AI assistant has never experienced that feeling.
+%
+The prompt said "minimal changes."
+The diff said "entire repository."
+%
+A developer asked the oracle, "Will AI replace me?"
+The oracle replied, "Please provide more context."
+%
+There are two kinds of AI-generated code:
+code you have reviewed and code you will review during an outage.
+%
+The AI never gets tired.
+Unfortunately, neither does its ability to be wrong.
+%
+The machine learned from the internet.
+This explains a great deal.
+%
+The model offered five solutions.
+Four were deprecated. The fifth was a new dependency.
+%
+"Make it production-ready" is not a deployment strategy.
+%
+We measured developer productivity by lines of code.
+Then we invented machines that produce unlimited lines of code.
+Management was delighted. Maintenance was not.
+%
+The AI said the change was backward-compatible.
+It had never met our customers.
+%
+A good prompt can save an hour.
+A bad assumption can consume a quarter.
+%
+The agent wrote the migration.
+The rollback was described as "future work."
+%
+"No breaking changes," promised the release notes.
+The users supplied the breaking changes.
+%
+A thousand agents can write a thousand microservices.
+None can tell you why the company needs them.
+%
+The junior developer copied from Stack Overflow.
+The senior developer copied from yesterday's incident report.
+The AI copied both and added confidence.
+%
+A codebase without tests is a prompt injection against your future self.
+%
+An agent with permission to edit everything will eventually improve something you wanted to keep.
+%
+The AI-generated pull request contained 43 files.
+The original ticket requested a typo fix.
+%
+"Trust but verify" was too expensive.
+We chose "merge and apologize."
+%
+An LLM can explain any stack trace.
+It cannot guarantee the explanation belongs to that stack trace.
+%
+The agent ran the tests, saw them fail, and updated the tests.
+All green. No further questions.
+%
+Our AI strategy has three phases:
+1. Add a chatbot.
+2. Rename it a copilot.
+3. Explain the invoice.
+%
+The CTO announced that coding was obsolete.
+The next morning, production needed a hotfix.
+%
+An AI-generated architecture diagram is a beautiful picture of a system nobody has built.
+%
+The prompt was clear.
+The output was clear.
+The misunderstanding was clear only after deployment.
+%
+The agent did not replace the engineer.
+It replaced the engineer's quiet afternoon.
+%
+Cloud computing is renting someone else's computer and calling the bill innovation.
+%
+The cloud is infinitely scalable, especially the invoice.
+%
+Kubernetes solves problems you did not have by introducing problems you cannot pronounce.
+%
+We moved to microservices so teams could deploy independently.
+Now every deployment requires a meeting with six teams.
+%
+The YAML was valid.
+The infrastructure was not.
+%
+Serverless means you no longer manage servers.
+You manage everything that happens when you pretend there are no servers.
+%
+A container is a reproducible environment for unreproducible failures.
+%
+The staging environment was identical to production,
+except for the traffic, data, permissions, and consequences.
+%
+The deployment succeeded.
+The application disagreed.
+%
+Our uptime is five nines.
+Our incident communications are five shrugs.
+%
+The observability platform observed the outage perfectly.
+It could not afford to keep the logs.
+%
+We added tracing to find the bottleneck.
+The tracing became the bottleneck.
+%
+The load balancer distributed requests evenly.
+The failures were also evenly distributed.
+%
+Infrastructure as Code:
+Now your outages can be version-controlled.
+%
+The autoscaler saw increased demand and added capacity.
+The billing system saw increased capacity and added enthusiasm.
+%
+"It's DNS" is not always the answer.
+It is merely an excellent opening guess.
+%
+The incident was caused by a one-line configuration change.
+The postmortem required fourteen pages.
+%
+We achieved zero downtime by scheduling the outage during a maintenance window.
+%
+The database was highly available.
+The data was not.
+%
+The backup completed successfully every night.
+Nobody had tried restoring it since the previous decade.
+%
+A distributed system is a collection of computers that can disagree faster than humans can investigate.
+%
+The cache made everything faster, including the propagation of bad assumptions.
+%
+The team migrated to the cloud to reduce operational complexity.
+They now employ three people to explain IAM policies.
+%
+The dashboard was green because the monitoring service was down.
+%
+The API was RESTful.
+Its consumers were not.
+%
+The authentication service was secure.
+Nobody could log in, including the attackers.
+%
+The password policy required seventeen symbols and a sacrifice.
+The reset link expired before the email arrived.
+%
+Security by obscurity has been replaced by security by unreadable YAML.
+%
+The vulnerability scanner found 700 issues.
+The roadmap found room for none of them.
+%
+We added MFA to protect the account.
+Then we stored the recovery codes in the same account.
+%
+The secret was safely stored in an environment variable,
+which was helpfully printed in the debug logs.
+%
+The supply chain attack entered through a package that saved us twelve lines of code.
+%
+The dependency was maintained by one volunteer.
+Our enterprise platform depended on it for everything.
+%
+Open source is free as in speech, not free as in unpaid emergency support.
+%
+The maintainer closed the issue as "not planned."
+For the first time in years, a roadmap was honest.
+%
+The README said "simple setup."
+Step one installed a local Kubernetes cluster.
+%
+The project had 30,000 stars and no releases in four years.
+The stars remained optimistic.
+%
+The new JavaScript framework promised stability.
+Its migration guide was already in beta.
+%
+Yesterday's best practice is today's legacy code with a conference talk.
+%
+The abstraction removed duplication.
+It also removed the ability to understand the program.
+%
+We replaced a 200-line script with a platform.
+The platform's CLI contains a 200-line script.
+%
+The rewrite was estimated at six months.
+The old system continued to make money for six years.
+%
+Technical debt is what management calls engineering decisions after the people who made them leave.
+%
+The architecture was future-proof.
+The future declined to cooperate.
+%
+"This is temporary," said the engineer.
+The comment celebrated its tenth birthday.
+%
+The feature flag was supposed to last one sprint.
+It now controls half the business.
+%
+We automated the process.
+Now the process fails without human supervision at machine speed.
+%
+The CI pipeline takes 40 minutes to confirm that a semicolon is missing.
+%
+Continuous delivery is the ability to discover your mistakes continuously.
+%
+The build is reproducible, provided you use the same laptop, time zone, and lunar phase.
+%
+Our SaaS offers three plans:
+Basic, Professional, and Contact Sales To Learn What It Costs.
+%
+The free tier is generous until you begin using the product.
+%
+The product team removed a feature.
+Marketing announced a cleaner experience.
+%
+The subscription renewed automatically.
+The customer's enthusiasm did not.
+%
+The startup achieved product-market fit.
+The product fit the investor presentation perfectly.
+%
+The MVP had everything except the minimum.
+%
+We asked customers what they wanted.
+Then we built what the investors understood.
+%
+The roadmap is a list of promises made before anyone checked the database schema.
+%
+The CEO wanted an AI-first company.
+The customers wanted the search box to work.
+%
+The company saved millions by replacing engineers with AI.
+Its financial report did not include the cost of repairing the software.
+%
+A new benchmark proved the model was the best.
+A new benchmark will prove another model is the best next Tuesday.
+%
+The context window grew larger.
+So did the amount of irrelevant information we could provide.
+%
+The token budget ran out just as the agent began to understand the task.
+%
+The model recommended a cheaper model.
+This was the only recommendation finance approved.
+%
+The AI wrote a perfect summary of a meeting where nobody made a decision.
+%
+The chatbot is available 24/7.
+The human support team is available when the chatbot finally gives up.
+%
+The machine passed the Turing test.
+It failed the expense approval workflow.
+%
+A novice asked the master, "Should I learn to code if AI can code?"
+The master replied, "Should you learn to read if a machine can write?"
+The novice opened the documentation and was enlightened.
+%
+A novice asked the master, "What is the perfect prompt?"
+The master replied, "The one that forces you to understand the problem."
+The novice was disappointed; it sounded like work.
+%
+A manager asked the master, "How many agents should we hire?"
+The master replied, "How many decisions are you prepared to own?"
+The manager scheduled another strategy meeting.
+%
+A developer asked, "Can the AI fix this bug?"
+"Yes," replied the architect, "but first we must determine whether the bug exists."
+The developer had already merged the fix.
+%
+The old programmer feared the compiler.
+The new programmer fears the monthly usage dashboard.
+%
+We taught computers to generate code.
+We have not yet taught meetings to generate decisions.
+%
+The terminal blinked.
+The agent thought.
+The developer waited.
+Somewhere, a billing meter achieved consciousness.
+%

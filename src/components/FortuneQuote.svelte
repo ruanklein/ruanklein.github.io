@@ -11,7 +11,7 @@
 	async function fetchQuote() {
 		if (!quotesCache) {
 			try {
-				const response = await fetch('/fortune/computers.txt');
+				const response = await fetch('/fortune/modern-computing.txt');
 				const text = await response.text();
 				quotesCache = text.split('%').filter((q) => q.trim());
 			} catch {
