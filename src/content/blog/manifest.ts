@@ -4,6 +4,7 @@ import InstallBash5MacosPost from './posts/install-bash-5-macos.svx';
 import SudoTouchIdPost from './posts/sudo-touch-id.svx';
 import OllamaTailscaleMacosPost from './posts/ollama-tailscale-macos.svx';
 import WindowedIphoneIpadMirroringMacosPost from './posts/windowed-iphone-ipad-mirroring-macos.svx';
+import NushellMacosPost from './posts/nushell-macos.svx';
 
 export const blogManifest: BlogManifest = {
 	tags: ['setup', 'cli', 'ai'],
@@ -43,6 +44,16 @@ export const blogManifest: BlogManifest = {
 			tag: ['setup'],
 			icon: Terminal,
 			component: WindowedIphoneIpadMirroringMacosPost
+		},
+		{
+			slug: 'nushell-macos',
+			title: 'Nushell on macOS: Installation and Everyday Commands',
+			date: '2026-11-22',
+			preview:
+				'Install Nushell on macOS and learn practical commands for processes, REST APIs, CSV, JSON, string cases, and tables.',
+			tag: ['cli', 'setup'],
+			icon: Terminal,
+			component: NushellMacosPost
 		}
 	]
 };

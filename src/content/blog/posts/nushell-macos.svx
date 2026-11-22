@@ -1,0 +1,150 @@
+<script>
+	import Command from '../../../components/blog/Command.svelte';
+</script>
+
+Nushell (Nu) is a cross-platform shell that treats data as structured values. Instead of parsing every command's text output, you can pass tables and records through a pipeline and query their fields directly. That makes tasks like inspecting processes, working with APIs, and converting files feel consistent. The [Nushell quick tour](https://www.nushell.sh/book/quick_tour.html) introduces this structured pipeline model.
+
+## Install Nushell on macOS
+
+The official [Nushell installation guide](https://www.nushell.sh/book/installation.html) lists Homebrew as a convenient option for macOS. If Homebrew is installed, install Nu with:
+
+<Command delay={24} command="brew install nushell" />
+
+Check the installed version and start an interactive Nushell session:
+
+<Command delay={24} command="nu --version" />
+
+<Command delay={24} command="nu" />
+
+This installs Nushell alongside your existing shell. Run `exit` to leave Nu; you can also launch it any time by typing `nu` in Terminal.
+
+## Create and query tables
+
+Nushell's native commands often return structured data. A list of records becomes a table, and commands such as `where`, `sort-by`, and `select` filter, order, and choose its columns.
+
+Create a small table, keep active users, sort them by name, and display selected columns:
+
+```nu
+let users = [
+	{name: "Alice", role: "Engineer", active: true}
+	{name: "Grace", role: "Designer", active: true}
+	{name: "Oliver", role: "Engineer", active: false}
+]
+
+$users | where active | sort-by name | select name role
+```
+
+The value in `$users` is still structured data. You can keep adding commands to the pipeline instead of converting it to text and parsing it again.
+
+## Find processes using the most CPU or memory
+
+Nushell's built-in `ps` command returns process information as a table. Sort by CPU, remove rows where macOS does not provide a value, and show the busiest processes:
+
+<Command
+	delay={24}
+	command="ps | compact cpu | sort-by cpu --reverse | first 10 | select pid name cpu mem"
+/>
+
+For processes using the most resident memory, sort by `mem`:
+
+<Command
+	delay={24}
+	command="ps | compact mem | sort-by mem --reverse | first 10 | select pid name mem cpu"
+/>
+
+On Nushell 0.117 and later, `ps --long` also includes `private`, the memory used only by a process—the value Activity Monitor labels “Memory.” Use that column when you want to compare against Activity Monitor:
+
+<Command
+	delay={24}
+	command="ps --long | compact private | sort-by private --reverse | first 10 | select pid name private cpu"
+/>
+
+`compact` removes rows with `null` values before sorting. On macOS, some details for processes owned by other users or protected by the system may be unavailable to a regular user. The [process command reference](https://www.nushell.sh/commands/docs/ps.html) and [0.117 release notes](https://www.nushell.sh/blog/2026-11-09-nushell_v0_117_0.html) describe these fields and platform differences.
+
+## Call REST APIs
+
+The `http` commands make requests and, by default, parse JSON responses into Nu records or tables. For example, fetch a post from JSONPlaceholder and select a few fields:
+
+<Command
+	delay={24}
+	command="http get https://jsonplaceholder.typicode.com/posts/1 | select userId id title"
+/>
+
+You can also read one field directly:
+
+<Command
+	delay={24}
+	command="http get https://jsonplaceholder.typicode.com/posts/1 | get title"
+/>
+
+Send a JSON body with `http post`. JSONPlaceholder is a test API, so this example is for learning rather than storing a real post:
+
+<Command
+	delay={24}
+	command={'http post -t application/json https://jsonplaceholder.typicode.com/posts { title: "Nushell", body: "Structured data in the shell", userId: 1 }'}
+/>
+
+For an API that requires a bearer token, keep the token in an environment variable instead of writing it into a script or sharing it in a command:
+
+<Command
+	delay={24}
+	command={'http get -H {Authorization: $"Bearer ($env.API_TOKEN)"} https://api.example.com/users'}
+/>
+
+See the official [HTTP cookbook](https://www.nushell.sh/cookbook/http.html) for request bodies, headers, response metadata, and more examples. A JSON response is already parsed by `http get`; use `--raw` when you specifically need the response as text.
+
+## Convert CSV and JSON
+
+`open` recognizes common file formats by their extension. Convert a CSV table to JSON, or a JSON array of records to CSV:
+
+<Command delay={24} command="open users.csv | to json | save users.json" />
+
+<Command delay={24} command="open users.json | to csv | save users.csv" />
+
+CSV stores values as text and has no native representation for nested records. If a numeric column should become a JSON number, convert it before writing the JSON file:
+
+<Command
+	delay={24}
+	command={'open users.csv | update age { into int } | to json | save users.json'}
+/>
+
+When the destination already exists, `save --force` overwrites it. Review the table shape before converting nested JSON to CSV; choose the fields to keep with `select` first. The [data formats guide](https://www.nushell.sh/book/data_formats.html) covers CSV, JSON, and their format-specific behavior.
+
+## Convert between naming cases
+
+The `str` subcommands convert strings into common naming conventions. These examples all start with `customer id`:
+
+| Nushell command | Result |
+| --- | --- |
+| `str camel-case` | `customerId` |
+| `str pascal-case` | `CustomerId` |
+| `str snake-case` | `customer_id` |
+
+Try each command on a string:
+
+<Command delay={24} command={'"customer id" | str camel-case'} />
+
+<Command delay={24} command={'"customer id" | str pascal-case'} />
+
+<Command delay={24} command={'"customer id" | str snake-case'} />
+
+To compare several inputs at once, pass a list through `each` and build one output record per name:
+
+```nu
+["first name" "firstName" "first_name"] | each {|name| {
+	source: $name,
+	camel: ($name | str camel-case),
+	pascal: ($name | str pascal-case),
+	snake: ($name | str snake-case)
+}}
+```
+
+Nu also provides `str kebab-case` and `str title-case`. The [string guide](https://www.nushell.sh/book/working_with_strings.html) explains how these commands split words and handle punctuation.
+
+## Keep learning from the prompt
+
+Nu's built-in help describes commands and their flags. Look up a command as you work:
+
+<Command delay={24} command="help http get" />
+
+Once a command returns a table, try `select` to choose columns, `where` to filter rows, and `sort-by` to order them. That pattern is a practical starting point for exploring files, processes, API responses, and other structured data.
